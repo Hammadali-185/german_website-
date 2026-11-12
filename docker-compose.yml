@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pizzablitz-postgres
+    environment:
+      POSTGRES_USER: pizzablitz
+      POSTGRES_PASSWORD: pizzablitz
+      POSTGRES_DB: pizzablitz
+    ports:
+      - "5432:5432"
+    volumes:
+      - pizzablitz-pg:/var/lib/postgresql/data
+
+volumes:
+  pizzablitz-pg:

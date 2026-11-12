@@ -1,0 +1,50 @@
+[
+  {
+    "day": "MONDAY",
+    "label": "Montag",
+    "opens": "15:45",
+    "closes": "22:59"
+  },
+  {
+    "day": "TUESDAY",
+    "label": "Dienstag",
+    "opens": "15:45",
+    "closes": "22:59"
+  },
+  {
+    "day": "WEDNESDAY",
+    "label": "Mittwoch",
+    "opens": "15:45",
+    "closes": "22:59"
+  },
+  {
+    "day": "THURSDAY",
+    "label": "Donnerstag",
+    "opens": "15:45",
+    "closes": "22:59"
+  },
+  {
+    "day": "FRIDAY",
+    "label": "Freitag",
+    "opens": "15:45",
+    "closes": "23:59"
+  },
+  {
+    "day": "SATURDAY",
+    "label": "Samstag",
+    "opens": "12:00",
+    "closes": "23:59"
+  },
+  {
+    "day": "SUNDAY",
+    "label": "Sonntag",
+    "opens": "11:00",
+    "closes": "22:59"
+  },
+  {
+    "day": "HOLIDAY",
+    "label": "Feiertag",
+    "opens": "11:00",
+    "closes": "22:59"
+  }
+]

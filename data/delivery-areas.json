@@ -1,0 +1,359 @@
+[
+  {
+    "postalCode": "74889",
+    "locality": "Steinberg - Steinfurt",
+    "externalId": "88",
+    "minimumOrderCents": 5000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Hilsbach",
+    "externalId": "86",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Weiler",
+    "externalId": "85",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Hoffenheim",
+    "externalId": "84",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "75031",
+    "locality": "Elsenz",
+    "externalId": "83",
+    "minimumOrderCents": 4000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69234",
+    "locality": "Horrenberg",
+    "externalId": "82",
+    "minimumOrderCents": 3000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69234",
+    "locality": "Balzfeld",
+    "externalId": "81",
+    "minimumOrderCents": 4800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Oberöwersheim",
+    "externalId": "79",
+    "minimumOrderCents": 5000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69190",
+    "locality": "Walldorf",
+    "externalId": "77",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69168",
+    "locality": "Wiesloch",
+    "externalId": "76",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "68753",
+    "locality": "Kirlach",
+    "externalId": "75",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "68753",
+    "locality": "Wiesental",
+    "externalId": "74",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76694",
+    "locality": "Forst",
+    "externalId": "72",
+    "minimumOrderCents": 5500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69231",
+    "locality": "Rauenberg",
+    "externalId": "70",
+    "minimumOrderCents": 1800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "68789",
+    "locality": "Sankt Leon-Rot Rot",
+    "externalId": "1",
+    "minimumOrderCents": 3000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "68789",
+    "locality": "Sankt Leon-Rot Sankt Leon",
+    "externalId": "2",
+    "minimumOrderCents": 3000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69234",
+    "locality": "Dielheim",
+    "externalId": "4",
+    "minimumOrderCents": 2000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69242",
+    "locality": "Mühlhausen",
+    "externalId": "8",
+    "minimumOrderCents": 1400,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69242",
+    "locality": "Mühlhausen Rettigheim",
+    "externalId": "9",
+    "minimumOrderCents": 1200,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69242",
+    "locality": "Mühlhausen Tairnbach",
+    "externalId": "10",
+    "minimumOrderCents": 1700,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69254",
+    "locality": "Malsch",
+    "externalId": "11",
+    "minimumOrderCents": 1400,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Sinsheim Dühren",
+    "externalId": "15",
+    "minimumOrderCents": 2800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Sinsheim Eschelbach",
+    "externalId": "18",
+    "minimumOrderCents": 1800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Sinsheim Waldangelloch",
+    "externalId": "31",
+    "minimumOrderCents": 2000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74918",
+    "locality": "Angelbachtal Eichtersheim",
+    "externalId": "35",
+    "minimumOrderCents": 1400,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74918",
+    "locality": "Angelbachtal Michelfeld",
+    "externalId": "36",
+    "minimumOrderCents": 1400,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76669",
+    "locality": "Bad Schön. Langenbrücken",
+    "externalId": "37",
+    "minimumOrderCents": 1300,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76669",
+    "locality": "Bad Schönborn Schönborn",
+    "externalId": "41",
+    "minimumOrderCents": 1500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76669",
+    "locality": "Bad Schönborn Mingolsheim",
+    "externalId": "38",
+    "minimumOrderCents": 1300,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Eichelberg",
+    "externalId": "42",
+    "minimumOrderCents": 1900,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Odenheim",
+    "externalId": "43",
+    "minimumOrderCents": 1600,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Schindelberg",
+    "externalId": "44",
+    "minimumOrderCents": 1000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Stifterhof",
+    "externalId": "45",
+    "minimumOrderCents": 1000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Tiefenbach",
+    "externalId": "46",
+    "minimumOrderCents": 1700,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Untere Mühle",
+    "externalId": "47",
+    "minimumOrderCents": 1200,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Östringen Zentrum",
+    "externalId": "48",
+    "minimumOrderCents": 1200,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76698",
+    "locality": "Ubstadt-Weiher Ubstadt",
+    "externalId": "50",
+    "minimumOrderCents": 2200,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76698",
+    "locality": "Ubstadt-Weiher Stettfeld",
+    "externalId": "49",
+    "minimumOrderCents": 1800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76698",
+    "locality": "Ubstadt-Weiher Weiher",
+    "externalId": "51",
+    "minimumOrderCents": 2200,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76698",
+    "locality": "Ubstadt-Weiher Zeutern",
+    "externalId": "52",
+    "minimumOrderCents": 1700,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Kraichtal Landshausen",
+    "externalId": "55",
+    "minimumOrderCents": 3800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Kraichtal Menzingen",
+    "externalId": "57",
+    "minimumOrderCents": 3500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Kraichtal Neuenbürg",
+    "externalId": "59",
+    "minimumOrderCents": 3800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76709",
+    "locality": "Kronau",
+    "externalId": "64",
+    "minimumOrderCents": 1800,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "69231",
+    "locality": "Malschenberg",
+    "externalId": "71",
+    "minimumOrderCents": 1600,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "68753",
+    "locality": "Waghäusel",
+    "externalId": "73",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Müzesheim",
+    "externalId": "78",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76703",
+    "locality": "Unteröwersheim",
+    "externalId": "80",
+    "minimumOrderCents": 5000,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Reihn -  Rohbach",
+    "externalId": "87",
+    "minimumOrderCents": 4500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "76684",
+    "locality": "Bruchsal ",
+    "externalId": "90",
+    "minimumOrderCents": 6500,
+    "deliveryFeeCents": null
+  },
+  {
+    "postalCode": "74889",
+    "locality": "Sinsheim - City",
+    "externalId": "89",
+    "minimumOrderCents": 4200,
+    "deliveryFeeCents": null
+  }
+]

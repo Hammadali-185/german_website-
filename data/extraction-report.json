@@ -1,0 +1,83 @@
+{
+  "extractedAt": "2026-11-11T04:45:50.108Z",
+  "source": "https://www.pizzablitz.online",
+  "categories": 22,
+  "products": 236,
+  "variants": 419,
+  "popupsFetched": 295,
+  "deliveryAreas": 51,
+  "warnings": [
+    {
+      "type": "price-mismatch",
+      "sku": "315",
+      "url": "https://www.pizzablitz.online/burger---fast-food-menue/fingerfood-box-315?prs=135",
+      "listPrice": 1200,
+      "popupPrice": 0
+    },
+    {
+      "type": "price-mismatch",
+      "sku": "315b",
+      "url": "https://www.pizzablitz.online/burger---fast-food-menue/onion-rings-315b?prs=135",
+      "listPrice": 600,
+      "popupPrice": 0
+    },
+    {
+      "type": "price-mismatch",
+      "sku": "318",
+      "url": "https://www.pizzablitz.online/burger---fast-food-menue/chicken-wings-318?prs=135",
+      "listPrice": 900,
+      "popupPrice": 0
+    }
+  ],
+  "missing": [
+    {
+      "item": "Deals Mo–Fr",
+      "detail": "Category URL returned HTTP 403. Products were not invented."
+    },
+    {
+      "item": "Käsespätzle category",
+      "detail": "https://www.pizzablitz.online/Kasespatzle returned HTTP 404."
+    },
+    {
+      "item": "Restaurant email",
+      "detail": "Impressum refers to an email address, but none is published."
+    },
+    {
+      "item": "Delivery fee",
+      "detail": "Only minimum order values are published. deliveryFeeCents is null."
+    },
+    {
+      "item": "Pickup minimum",
+      "detail": "No separate pickup minimum is published. Stored as 0 because the site shows 0,00€ before an area is chosen."
+    },
+    {
+      "item": "Allergen letter legend",
+      "detail": "Product codes such as A, C, G and A1 are published, but the allergen page does not define the letters."
+    },
+    {
+      "item": "Drink deposit",
+      "detail": "Pfand appears in drink descriptions. It is not added as a separate cart charge."
+    },
+    {
+      "item": "Angebot 1 cheese crust",
+      "detail": "Description says 4€. The extra button on the product popup is the price used for ordering."
+    },
+    {
+      "item": "Online payment credentials",
+      "detail": "AGB lists card, PayPal and Sofort. No credentials are available."
+    },
+    {
+      "item": "Holiday calendar",
+      "detail": "Holiday hours are published, but no list of holidays is published."
+    },
+    {
+      "item": "Reviews",
+      "detail": "No verifiable customer reviews were found."
+    }
+  ],
+  "specialPageStatus": 200,
+  "inaccessible": [
+    "Customer payment checkout could not be completed without placing an order.",
+    "Deals Mo–Fr category is blocked by the host firewall."
+  ]
+}

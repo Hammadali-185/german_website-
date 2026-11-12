@@ -1,0 +1,3266 @@
+[
+  {
+    "sku": "220",
+    "name": "Angebot 1",
+    "description": "mit 1 Familien-Pizza m.4 Auflagen + 1 gr. Salat ihrer Wahl + 1,01 Cola mit käserand familie 4€",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 2850,
+        "sourceProductId": "1189",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-1-220?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][37]",
+            "name": "1.Ihre Wahl",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Reis+Beilagensalat+Zaziki",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Pommes+Beilagensalat+Zaziki",
+                "priceCents": 0,
+                "sortOrder": 1
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 2,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 450
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 200
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "221",
+    "name": "Angebot 2",
+    "description": "2x 28er Pizza nach wahl mit 4 Auflagen + 1 kl. Salat Ihrer Wahl + Flasche Coca-cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 2700,
+        "sourceProductId": "1190",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-2-221?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "222",
+    "name": "Angebot 3",
+    "description": "1 Nudel-Speziualität Ihrer Wahl + 1Gyros-Gericht Ihrer Wahl + 1 gr.Salat Ihrer Wahl + 1 Flasche Coca-cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 2850,
+        "sourceProductId": "1191",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-3-222?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 0,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][15]",
+            "name": "1.Nudelsorten",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Gnocchi",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Rigatoni",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Spaghetti",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Tortellini",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "Tagliatelle",
+                "priceCents": 0,
+                "sortOrder": 4
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][39]",
+            "name": "1.Ihre Nudelgeriechte",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 2,
+            "options": [
+              {
+                "label": "141-Pasta Napoli",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "142-Pasta Bolognese",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "143-Pasta Carbonara",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "144-Pasta Marinara",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "145-Pasta Gorgonzola",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "146-Pasta Funghi",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "146a-Pasta Lachs",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "148a-Pasta Broccoli",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "151-Pasta alla Panna",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "151a-Pasta Formaggi",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "152-Pasta Primavera",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "323-Pasta Käsespätzle",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "324-Pasta Käsespätzle",
+                "priceCents": 0,
+                "sortOrder": 12
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][40]",
+            "name": "1.Ihre Gyrosgeriechte",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 3,
+            "options": [
+              {
+                "label": "201-Gyrosteller mit gegrilltem Putenfleisch",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "203-Gyros überbacken",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "205-Gyros überbacken mit Paprika",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "206-Gyros mit Tomatensauce",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "207-Gyros scharf",
+                "priceCents": 0,
+                "sortOrder": 4
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 4,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "223",
+    "name": "Angebot 4",
+    "description": "2 FAMILIEN-PIZZA mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 4450,
+        "sourceProductId": "1192",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-4-223?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 450
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 200
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "224",
+    "name": "Angebot 5",
+    "description": "1x Partypizza mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 3400,
+        "sourceProductId": "1193",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-5-224?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 550
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 300
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "225",
+    "name": "Angebot 6",
+    "description": "2x32er Pizza nach Wahl mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01L Coca-Cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 2850,
+        "sourceProductId": "1194",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-6-225?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "226",
+    "name": "Angebot 7",
+    "description": "1X32 er Pizza nach Wahl mit 4 Auflagen + 1 kl. Salat Ihrer Wahl + 0,33l Dose Coca-cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 1850,
+        "sourceProductId": "1195",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-7-226?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "227",
+    "name": "Angebot 8",
+    "description": "1x28 er Pizza nach Wahl mit 4 Auflagen + 1 kl. Gemishtersalat + 0,33l Dose Coca-cola",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 1600,
+        "sourceProductId": "1196",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebot-8-227?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [
+          {
+            "sourceKey": "[1][36]",
+            "name": "1.Salat Ihrer Wahl",
+            "required": true,
+            "selectionType": "SELECT",
+            "sortOrder": 0,
+            "options": [
+              {
+                "label": "181-Grüner Salat",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "182-Gemischter Salat",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "182a-Gurkensalat",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "183-Italienischer Salat",
+                "priceCents": 0,
+                "sortOrder": 3
+              },
+              {
+                "label": "184-Salat Chef",
+                "priceCents": 0,
+                "sortOrder": 4
+              },
+              {
+                "label": "185-Salat Nizza",
+                "priceCents": 0,
+                "sortOrder": 5
+              },
+              {
+                "label": "186-Tomatensalat",
+                "priceCents": 0,
+                "sortOrder": 6
+              },
+              {
+                "label": "187-Salat Spezial",
+                "priceCents": 0,
+                "sortOrder": 7
+              },
+              {
+                "label": "188-Salat Hawaii",
+                "priceCents": 0,
+                "sortOrder": 8
+              },
+              {
+                "label": "189-Hähnchensalat",
+                "priceCents": 0,
+                "sortOrder": 9
+              },
+              {
+                "label": "190-Putensalat",
+                "priceCents": 0,
+                "sortOrder": 10
+              },
+              {
+                "label": "191-Thunfischsalat",
+                "priceCents": 0,
+                "sortOrder": 11
+              },
+              {
+                "label": "192-Bauernsalat",
+                "priceCents": 0,
+                "sortOrder": 12
+              },
+              {
+                "label": "193-Mexikanischer Salat",
+                "priceCents": 0,
+                "sortOrder": 13
+              },
+              {
+                "label": "194-Salat Athen",
+                "priceCents": 0,
+                "sortOrder": 14
+              },
+              {
+                "label": "195-Salat Rucola",
+                "priceCents": 0,
+                "sortOrder": 15
+              }
+            ]
+          },
+          {
+            "sourceKey": "[1][14]",
+            "name": "1.Dressing",
+            "required": true,
+            "selectionType": "RADIO",
+            "sortOrder": 1,
+            "options": [
+              {
+                "label": "Eissig und Öl",
+                "priceCents": 0,
+                "sortOrder": 0
+              },
+              {
+                "label": "Ohne Dressing",
+                "priceCents": 0,
+                "sortOrder": 1
+              },
+              {
+                "label": "Joghurt",
+                "priceCents": 0,
+                "sortOrder": 2
+              },
+              {
+                "label": "Knoblauch",
+                "priceCents": 0,
+                "sortOrder": 3
+              }
+            ]
+          }
+        ],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  },
+  {
+    "sku": "228",
+    "name": "Angebote 9",
+    "description": "3x 32er Pizza nach Wahl mit 4 Auflagen",
+    "allergenCodes": "",
+    "categorySlug": "angebot",
+    "isOffer": true,
+    "variants": [
+      {
+        "label": "Preis",
+        "detail": "",
+        "priceCents": 3150,
+        "sourceProductId": "1261",
+        "sourcePriceId": "94",
+        "popupUrl": "https://www.pizzablitz.online/angebot/angebote-9-228?prs=94",
+        "sortOrder": 0,
+        "includedExtraCount": 4,
+        "choiceGroups": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
+        "sizeLabelFromPopup": ""
+      }
+    ]
+  }
+]

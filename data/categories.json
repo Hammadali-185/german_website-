@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "angebot",
+    "name": "Angebot",
+    "sourceName": "Angebot",
+    "publishedCount": 9,
+    "image": "/images/original/angebot.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Sparmenue.jpg",
+    "sortOrder": 0
+  },
+  {
+    "slug": "burger-und-fast-food",
+    "name": "Burger und Fast food",
+    "sourceName": "Burger und Fast food",
+    "publishedCount": 19,
+    "image": "/images/original/burger-und-fast-food.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Burger_icon.jpg",
+    "sortOrder": 1
+  },
+  {
+    "slug": "pizzen",
+    "name": "Pizzen",
+    "sourceName": "Pizzen",
+    "publishedCount": 47,
+    "image": "/images/original/pizzen.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Pizza-icon.jpg",
+    "sortOrder": 2
+  },
+  {
+    "slug": "american-pizza",
+    "name": "American Pizza",
+    "sourceName": "American Pizza",
+    "publishedCount": 6,
+    "image": "/images/original/american-pizza.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/American_Pizza.jpg",
+    "sortOrder": 3
+  },
+  {
+    "slug": "flammkuchen",
+    "name": "Flammkuchen",
+    "sourceName": "Flammkuchen",
+    "publishedCount": 5,
+    "image": "/images/original/flammkuchen.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/flammkuchen.jpg",
+    "sortOrder": 4
+  },
+  {
+    "slug": "calzone",
+    "name": "Calzone",
+    "sourceName": "Calzone",
+    "publishedCount": 6,
+    "image": "/images/original/calzone.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Pizza-icon.jpg",
+    "sortOrder": 5
+  },
+  {
+    "slug": "pizzabroetchen",
+    "name": "Pizzabrötchen",
+    "sourceName": "Pizzabrötchen",
+    "publishedCount": 8,
+    "image": "/images/original/pizzabroetchen.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Pizza-icon.jpg",
+    "sortOrder": 6
+  },
+  {
+    "slug": "Salate",
+    "name": "Salate",
+    "sourceName": "Salate",
+    "publishedCount": 17,
+    "image": "/images/original/Salate.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Salat.jpg",
+    "sortOrder": 7
+  },
+  {
+    "slug": "putenschnitzel",
+    "name": "Putenschnitzel",
+    "sourceName": "Putenschnitzel",
+    "publishedCount": 10,
+    "image": "/images/original/putenschnitzel.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Schnitzel.jpg",
+    "sortOrder": 8
+  },
+  {
+    "slug": "vorspeisen",
+    "name": "Vorspeisen",
+    "sourceName": "Vorspeisen",
+    "publishedCount": 8,
+    "image": "/images/original/vorspeisen.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "sortOrder": 9
+  },
+  {
+    "slug": "pasta",
+    "name": "Pasta",
+    "sourceName": "Pasta",
+    "publishedCount": 11,
+    "image": "/images/original/pasta.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Pasta.jpg",
+    "sortOrder": 10
+  },
+  {
+    "slug": "al-forno",
+    "name": "Al Forno",
+    "sourceName": "Al Forno",
+    "publishedCount": 11,
+    "image": "/images/original/al-forno.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Al-Forno.jpg",
+    "sortOrder": 11
+  },
+  {
+    "slug": "beilagen-und-sauce",
+    "name": "Beilagen und Sauce",
+    "sourceName": "Beilagen und Sauce",
+    "publishedCount": 10,
+    "image": "/images/original/beilagen-und-sauce.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "sortOrder": 12
+  },
+  {
+    "slug": "tacos",
+    "name": "Tacos",
+    "sourceName": "Tacos",
+    "publishedCount": 5,
+    "image": "/images/original/tacos.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Mexican.jpg",
+    "sortOrder": 13
+  },
+  {
+    "slug": "dessert",
+    "name": "Dessert",
+    "sourceName": "Dessert",
+    "publishedCount": 6,
+    "image": "/images/original/dessert.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "sortOrder": 14
+  },
+  {
+    "slug": "auflaeufe",
+    "name": "Aufläufe",
+    "sourceName": "Aufläufe",
+    "publishedCount": 5,
+    "image": "/images/original/auflaeufe.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Auflauf.jpg",
+    "sortOrder": 15
+  },
+  {
+    "slug": "reisgerichte",
+    "name": "Reisgerichte",
+    "sourceName": "Reisgerichte",
+    "publishedCount": 3,
+    "image": "/images/original/reisgerichte.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/biryani.jpg",
+    "sortOrder": 16
+  },
+  {
+    "slug": "indisches",
+    "name": "Indisches",
+    "sourceName": "Indisches",
+    "publishedCount": 10,
+    "image": "/images/original/indisches.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/biryani.jpg",
+    "sortOrder": 17
+  },
+  {
+    "slug": "gyros",
+    "name": "Gyros",
+    "sourceName": "Gyros",
+    "publishedCount": 5,
+    "image": "/images/original/gyros.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "sortOrder": 18
+  },
+  {
+    "slug": "doenergerichte",
+    "name": "Dönergerichte",
+    "sourceName": "Dönergerichte",
+    "publishedCount": 3,
+    "image": "/images/original/doenergerichte.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "sortOrder": 19
+  },
+  {
+    "slug": "burger---fast-food-menue",
+    "name": "Burger - Fast food Menü",
+    "sourceName": "Burger - Fast food Menü",
+    "publishedCount": 19,
+    "image": "/images/original/burger---fast-food-menue.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Burger_icon.jpg",
+    "sortOrder": 20
+  },
+  {
+    "slug": "getraenke",
+    "name": "Getränke",
+    "sourceName": "Getränke",
+    "publishedCount": 13,
+    "image": "/images/original/getraenke.jpg",
+    "imageSource": "https://www.pizzablitz.online/image/data/images/Getraenk_icon.jpg",
+    "sortOrder": 21
+  }
+]

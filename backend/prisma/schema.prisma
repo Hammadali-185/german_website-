@@ -1,0 +1,292 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum FulfillmentType {
+  DELIVERY
+  PICKUP
+}
+
+enum OrderStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  PREPARING
+  OUT_FOR_DELIVERY
+  READY_FOR_PICKUP
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  PAYPAL
+  CARD
+  SOFORT
+}
+
+enum PaymentStatus {
+  UNPAID
+  NOT_CONFIGURED
+  PENDING
+  PAID
+  FAILED
+}
+
+enum ServiceDay {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+  HOLIDAY
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  phone        String    @default("")
+  role         Role      @default(CUSTOMER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  addresses    Address[]
+  orders       Order[]
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Address {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label      String  @default("Zuhause")
+  street     String
+  postalCode String
+  city       String
+  extra      String  @default("")
+}
+
+model Restaurant {
+  id                  String         @id @default(cuid())
+  legalName           String
+  tradeName           String
+  publicName          String
+  ownerName           String
+  street              String
+  postalCode          String
+  city                String
+  country             String
+  phone               String
+  phoneInternational  String
+  fax                 String
+  faxInternational    String
+  email               String?
+  website             String
+  facebookUrl         String?
+  latitude            Float
+  longitude           Float
+  logo                String
+  yearsClaim          String
+  timezone            String
+  pickupMinimumCents  Int            @default(0)
+  holidayMode         Boolean        @default(false)
+  hours               OpeningHours[]
+}
+
+model OpeningHours {
+  id           String     @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  day          ServiceDay
+  label        String
+  opens        String
+  closes       String
+
+  @@unique([restaurantId, day])
+}
+
+model DeliveryArea {
+  id                 String  @id @default(cuid())
+  postalCode         String
+  locality           String
+  externalId         String  @unique
+  minimumOrderCents  Int
+  deliveryFeeCents   Int?
+  active             Boolean @default(true)
+  orders             Order[]
+}
+
+model Category {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  name            String
+  image           String?
+  sortOrder       Int       @default(0)
+  publishedCount  Int       @default(0)
+  products        Product[]
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  sku              String
+  name             String
+  description      String           @db.Text
+  allergenCodes    String           @default("")
+  available        Boolean          @default(true)
+  isOffer          Boolean          @default(false)
+  sortOrder        Int              @default(0)
+  sourceProductId  String?
+  categoryId       String
+  category         Category         @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  variants         ProductVariant[]
+
+  @@unique([categoryId, sku])
+  @@index([categoryId])
+}
+
+model ProductVariant {
+  id                  String        @id @default(cuid())
+  productId           String
+  product             Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sourcePriceId       String
+  label               String
+  detail              String        @default("")
+  priceCents          Int
+  includedExtraCount  Int           @default(0)
+  sortOrder           Int           @default(0)
+  choiceGroups        ChoiceGroup[]
+  extraPrices         VariantExtra[]
+
+  @@unique([productId, sourcePriceId])
+}
+
+model ChoiceGroup {
+  id             String         @id @default(cuid())
+  variantId      String
+  variant        ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  sourceKey      String
+  name           String
+  required       Boolean        @default(true)
+  selectionType  String
+  sortOrder      Int            @default(0)
+  options        ChoiceOption[]
+}
+
+model ChoiceOption {
+  id         String      @id @default(cuid())
+  groupId    String
+  group      ChoiceGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  label      String
+  priceCents Int
+  sortOrder  Int         @default(0)
+}
+
+model Extra {
+  id            String         @id @default(cuid())
+  sourceExtraId String         @unique
+  name          String
+  prices        VariantExtra[]
+}
+
+model VariantExtra {
+  variantId  String
+  extraId    String
+  priceCents Int
+  variant    ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  extra      Extra          @relation(fields: [extraId], references: [id], onDelete: Cascade)
+
+  @@id([variantId, extraId])
+}
+
+model Promotion {
+  id                  String  @id @default(cuid())
+  slug                String  @unique
+  title               String
+  body                String  @db.Text
+  active              Boolean @default(true)
+  phoneOnly           Boolean @default(false)
+  minimumOrderCents   Int?
+}
+
+model Order {
+  id                 String          @id @default(cuid())
+  publicNumber       Int             @unique @default(autoincrement())
+  userId             String?
+  user               User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  status             OrderStatus     @default(PENDING)
+  fulfillment        FulfillmentType
+  customerFirstName  String
+  customerLastName   String
+  customerEmail      String
+  customerPhone      String
+  street             String          @default("")
+  postalCode         String          @default("")
+  city               String          @default("")
+  deliveryAreaId     String?
+  deliveryArea       DeliveryArea?   @relation(fields: [deliveryAreaId], references: [id], onDelete: SetNull)
+  notes              String          @default("")
+  subtotalCents      Int
+  deliveryFeeCents   Int
+  totalCents         Int
+  minimumOrderCents  Int
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  items              OrderItem[]
+  payment            Payment?
+}
+
+model OrderItem {
+  id                  String @id @default(cuid())
+  orderId             String
+  order               Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  sku                 String
+  productName         String
+  variantLabel        String
+  variantDetail       String @default("")
+  unitPriceCents      Int
+  quantity            Int
+  lineTotalCents      Int
+  customizationJson   Json
+}
+
+model Payment {
+  id                String        @id @default(cuid())
+  orderId           String        @unique
+  order             Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  method            PaymentMethod
+  status            PaymentStatus
+  providerReference String?
+  createdAt         DateTime      @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+  read      Boolean  @default(false)
+}

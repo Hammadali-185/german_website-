@@ -1,0 +1,30 @@
+{
+  "legalName": "Snober Einzelunternehmen",
+  "tradeName": "Toni's Pizzablitz Östringen",
+  "publicName": "Pizza Blitz",
+  "ownerName": "Uzair Ahmad",
+  "street": "Kuhngasse 1",
+  "postalCode": "76684",
+  "city": "Östringen",
+  "country": "Deutschland",
+  "phone": "07253 26560",
+  "phoneInternational": "+49 7253 26560",
+  "fax": "072532789814",
+  "faxInternational": "+49 7253 2789814",
+  "email": null,
+  "website": "https://www.pizzablitz.online/",
+  "facebookUrl": "https://www.facebook.com/Pizza-Blitz-%C3%B6stringen-136650623797749/",
+  "latitude": 49.2187392,
+  "longitude": 8.7126137,
+  "logo": "/images/original/logo.png",
+  "yearsClaim": "Seit 26 Jahre in Östringen",
+  "timezone": "Europe/Berlin",
+  "pickupMinimumCents": 0,
+  "announcement": {
+    "active": true,
+    "phoneOnly": true,
+    "minimumOrderCents": 3500,
+    "title": "Gratis-Artikel bei telefonischer Bestellung",
+    "body": "Bei Anruf und einem Mindestbestellwert ab 35€ gibt es als Gratisartikel Spaghetti Eis oder Cola 1L nach Wahl. Dieses Angebot gilt laut der aktuellen Website nur bei Anruf und wird nicht automatisch im Warenkorb abgezogen."
+  }
+}
