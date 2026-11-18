@@ -4,7 +4,7 @@ services:
     container_name: pizzablitz-postgres
     environment:
       POSTGRES_USER: pizzablitz
-      POSTGRES_PASSWORD: pizzablitz
+      POSTGRES_PASSWORD: set-a-local-password
       POSTGRES_DB: pizzablitz
     ports:
       - "5432:5432"

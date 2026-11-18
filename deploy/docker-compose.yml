@@ -3,7 +3,7 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: pizzablitz
-      POSTGRES_PASSWORD: pizzablitz
+      POSTGRES_PASSWORD: set-a-local-password
       POSTGRES_DB: pizzablitz
     volumes:
       - pizzablitz-pg:/var/lib/postgresql/data
@@ -13,11 +13,11 @@ services:
       context: ..
       dockerfile: deploy/Dockerfile.api
     environment:
-      DATABASE_URL: postgresql://pizzablitz:pizzablitz@postgres:5432/pizzablitz
+      DATABASE_URL: postgresql://pizzablitz:set-a-local-password@postgres:5432/pizzablitz
       CLIENT_ORIGIN: http://localhost
       DATA_DIR: ../data
       ADMIN_EMAIL: admin@pizzablitz.local
-      ADMIN_PASSWORD: change-me-please
+      ADMIN_PASSWORD: set-a-local-password
       SECURE_COOKIES: "false"
       PORT: 4000
     depends_on:
