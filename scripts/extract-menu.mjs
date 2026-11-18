@@ -35,27 +35,27 @@ const CATEGORIES = [
 ];
 
 const CATEGORY_IMAGES = {
-  angebot: "image/data/kategorien/Sparmenue.jpg",
+  angebot: "https://images.unsplash.com/photo-1571066811602-716837d681de?auto=format&fit=crop&w=1600&q=80",
   "burger-und-fast-food": "image/data/images/Burger_icon.jpg",
   pizzen: "image/data/images/Pizza-icon.jpg",
   "american-pizza": "image/data/kategorien/American_Pizza.jpg",
   flammkuchen: "image/data/kategorien/flammkuchen.jpg",
-  calzone: "image/data/images/Pizza-icon.jpg",
-  pizzabroetchen: "image/data/images/Pizza-icon.jpg",
+  calzone: "https://images.unsplash.com/photo-1536964549204-cce9eab227bd?auto=format&fit=crop&w=1600&q=80",
+  pizzabroetchen: "https://images.unsplash.com/photo-1506280754576-f6fa8a873550?auto=format&fit=crop&w=1600&q=80",
   Salate: "image/data/kategorien/Salat.jpg",
   putenschnitzel: "image/data/kategorien/Schnitzel.jpg",
   vorspeisen: "image/data/images/Menue_icon.jpg",
   pasta: "image/data/kategorien/Pasta.jpg",
   "al-forno": "image/data/kategorien/Al-Forno.jpg",
-  "beilagen-und-sauce": "image/data/images/Menue_icon.jpg",
+  "beilagen-und-sauce": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1600&q=80",
   tacos: "image/data/kategorien/Mexican.jpg",
-  dessert: "image/data/images/Menue_icon.jpg",
+  dessert: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1600&q=80",
   auflaeufe: "image/data/kategorien/Auflauf.jpg",
   reisgerichte: "image/data/kategorien/biryani.jpg",
-  indisches: "image/data/kategorien/biryani.jpg",
-  gyros: "image/data/images/Menue_icon.jpg",
-  doenergerichte: "image/data/images/Menue_icon.jpg",
-  "burger---fast-food-menue": "image/data/images/Burger_icon.jpg",
+  indisches: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1600&q=80",
+  gyros: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1600&q=80",
+  doenergerichte: "https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=1600&q=80",
+  "burger---fast-food-menue": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=1600&q=80",
   getraenke: "image/data/images/Getraenk_icon.jpg",
 };
 
@@ -335,7 +335,7 @@ async function main() {
       sourceName: category.name,
       publishedCount: parsed.publishedCount,
       image: saved ? `/images/original/${imageFile}` : null,
-      imageSource: `${BASE}/${imageSource}`,
+      imageSource: imageSource.startsWith("http") ? imageSource : `${BASE}/${imageSource}`,
       sortOrder: categories.length,
     });
     for (const product of parsed.products) {

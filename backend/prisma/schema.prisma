@@ -43,6 +43,11 @@ enum PaymentStatus {
   FAILED
 }
 
+enum NotificationAudience {
+  CUSTOMER
+  ADMIN
+}
+
 enum ServiceDay {
   MONDAY
   TUESDAY
@@ -64,9 +69,11 @@ model User {
   role         Role      @default(CUSTOMER)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
-  addresses    Address[]
-  orders       Order[]
-  sessions     Session[]
+  addresses     Address[]
+  orders        Order[]
+  sessions      Session[]
+  notifications Notification[]
+  realtimeTickets RealtimeTicket[]
 }
 
 model Session {
@@ -234,17 +241,22 @@ model Promotion {
 model Order {
   id                 String          @id @default(cuid())
   publicNumber       Int             @unique @default(autoincrement())
+  trackingTokenHash  String?         @unique
   userId             String?
   user               User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
   status             OrderStatus     @default(PENDING)
   fulfillment        FulfillmentType
   customerFirstName  String
   customerLastName   String
-  customerEmail      String
+  customerEmail      String?
   customerPhone      String
+  idempotencyKey     String?         @unique
   street             String          @default("")
   postalCode         String          @default("")
   city               String          @default("")
+  latitude           Float?
+  longitude          Float?
+  distanceKm         Float?
   deliveryAreaId     String?
   deliveryArea       DeliveryArea?   @relation(fields: [deliveryAreaId], references: [id], onDelete: SetNull)
   notes              String          @default("")
@@ -256,6 +268,55 @@ model Order {
   updatedAt          DateTime        @updatedAt
   items              OrderItem[]
   payment            Payment?
+  statusEvents       OrderStatusEvent[]
+  notifications      Notification[]
+
+  @@index([userId, createdAt])
+}
+
+model RealtimeOutbox {
+  id          String    @id @default(cuid())
+  type        String
+  payload     Json
+  createdAt   DateTime  @default(now())
+  publishedAt DateTime?
+
+  @@index([publishedAt, createdAt])
+}
+
+model RealtimeTicket {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model OrderStatusEvent {
+  id        String      @id @default(cuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  createdAt DateTime    @default(now())
+
+  @@index([orderId, createdAt])
+}
+
+model Notification {
+  id        String               @id @default(cuid())
+  audience  NotificationAudience
+  userId    String?
+  user      User?                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderId   String?
+  order     Order?               @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  title     String
+  body      String
+  readAt    DateTime?
+  createdAt DateTime             @default(now())
+
+  @@index([userId, readAt, createdAt])
+  @@index([audience, readAt, createdAt])
 }
 
 model OrderItem {

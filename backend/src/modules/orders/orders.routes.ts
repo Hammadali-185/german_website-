@@ -1,10 +1,16 @@
 import { Router } from "express";
+import { z } from "zod";
 import { prisma } from "../../database/prisma.js";
 import { asyncRoute } from "../../utils/http.js";
 import { requireUser } from "../../middleware/auth.js";
 import { orderLimiter } from "../../middleware/rateLimit.js";
 import { contactSchema, orderSchema, quoteSchema } from "./orders.schema.js";
-import { createOrder, getOwnOrder, listOwnOrders, quoteOrder } from "./orders.service.js";
+import { listCustomerNotifications, markCustomerNotificationsRead } from "./notifications.service.js";
+import { createOrder, getOrderByTrackingToken, getOwnOrder, listOwnOrders, quoteOrder } from "./orders.service.js";
+
+const readSchema = z.object({
+  ids: z.array(z.string().min(1)).max(50).optional(),
+});
 
 export const orderRouter = Router();
 
@@ -30,6 +36,34 @@ orderRouter.get(
   requireUser,
   asyncRoute(async (req, res) => {
     res.json(await listOwnOrders(req.user!.id));
+  }),
+);
+
+orderRouter.get(
+  "/orders/track/:token",
+  orderLimiter,
+  asyncRoute(async (req, res) => {
+    res.json(await getOrderByTrackingToken(req.params.token));
+  }),
+);
+
+orderRouter.get(
+  "/notifications",
+  asyncRoute(async (req, res) => {
+    if (!req.user) {
+      res.json({ unreadCount: 0, items: [] });
+      return;
+    }
+    res.json(await listCustomerNotifications(req.user.id));
+  }),
+);
+
+orderRouter.post(
+  "/notifications/read",
+  requireUser,
+  asyncRoute(async (req, res) => {
+    const body = readSchema.parse(req.body ?? {});
+    res.json(await markCustomerNotificationsRead(req.user!.id, body.ids));
   }),
 );
 

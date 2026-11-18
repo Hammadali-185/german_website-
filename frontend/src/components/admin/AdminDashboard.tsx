@@ -2,24 +2,30 @@
 
 import { api } from "@/lib/api";
 import { formatEuro } from "@/lib/format";
-import { useEffect, useState } from "react";
+import { openSocket, rememberEvent, type LiveSocket } from "@/lib/realtime";
+import { ADMIN_STATUS_OPTIONS, statusLabel } from "@pizzablitz/shared";
+import { useEffect, useRef, useState } from "react";
 
 type Stats = { totalOrders: number; pendingOrders: number; completedOrders: number; dailySalesCents: number; recent: { id: string; publicNumber: number; status: string; totalCents: number; customerFirstName: string; customerLastName: string }[] };
 type Order = {
   id: string;
   publicNumber: number;
+  orderCode?: string;
   status: string;
   fulfillment: string;
   customerFirstName: string;
   customerLastName: string;
   customerPhone: string;
-  customerEmail: string;
+  customerEmail: string | null;
   street: string;
   postalCode: string;
   city: string;
+  distanceKm?: number | null;
   notes: string;
+  subtotalCents: number;
   totalCents: number;
   deliveryFeeCents: number;
+  createdAt: string;
   items: { id: string; quantity: number; productName: string; variantLabel: string; lineTotalCents: number; customizationJson: { choices?: { label: string }[]; extras?: { name: string; included?: boolean }[] } }[];
   deliveryArea?: { locality: string } | null;
   payment?: { method: string; status: string } | null;
@@ -39,7 +45,21 @@ type Area = { id: string; postalCode: string; locality: string; minimumOrderCent
 type Hour = { id: string; label: string; opens: string; closes: string };
 type Promotion = { slug: string; title: string; body: string; active: boolean; phoneOnly: boolean; minimumOrderCents: number | null };
 
-const statuses = ["PENDING", "ACCEPTED", "REJECTED", "PREPARING", "OUT_FOR_DELIVERY", "READY_FOR_PICKUP", "COMPLETED", "CANCELLED"];
+function beep() {
+  const context = new AudioContext();
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+  oscillator.frequency.value = 880;
+  gain.gain.value = 0.04;
+  oscillator.connect(gain);
+  gain.connect(context.destination);
+  oscillator.start();
+  oscillator.stop(context.currentTime + 0.18);
+  oscillator.onended = () => void context.close();
+}
+
+const paymentMethodLabel: Record<string, string> = { CASH: "Bar", PAYPAL: "PayPal", CARD: "Karte", SOFORT: "Sofort" };
+const paymentStatusLabel: Record<string, string> = { UNPAID: "Unbezahlt", NOT_CONFIGURED: "Nicht konfiguriert", PENDING: "Offen", PAID: "Bezahlt", FAILED: "Fehlgeschlagen" };
 
 export function AdminDashboard() {
   const [tab, setTab] = useState("dashboard");
@@ -52,6 +72,9 @@ export function AdminDashboard() {
   const [promotion, setPromotion] = useState<Promotion | null>(null);
   const [holidayMode, setHolidayMode] = useState(false);
   const [pickupMinimum, setPickupMinimum] = useState(0);
+  const [live, setLive] = useState(false);
+  const [sound, setSound] = useState(false);
+  const seenEvents = useRef(new Set<string>());
 
   async function load() {
     setError("");
@@ -77,7 +100,76 @@ export function AdminDashboard() {
   }
 
   useEffect(() => {
+    setSound(window.localStorage.getItem("pb-order-sound") === "1");
     void load();
+  }, []);
+
+  useEffect(() => {
+    let stopped = false;
+    let socket: LiveSocket | null = null;
+    let poll = 0;
+    function startPoll() {
+      if (!poll) poll = window.setInterval(() => void load(), 20000);
+    }
+    function stopPoll() {
+      if (poll) window.clearInterval(poll);
+      poll = 0;
+    }
+    api<{ token: string }>("/api/realtime/ticket", { method: "POST", body: "{}" })
+      .then((ticket) => {
+        if (stopped) return;
+        socket = openSocket({ ticket: ticket.token });
+        socket.on("connect", () => {
+          setLive(true);
+          stopPoll();
+          void load();
+          socket?.emit("admin:join");
+        });
+        socket.on("disconnect", () => {
+          setLive(false);
+          startPoll();
+        });
+        socket.on("connect_error", () => {
+          setLive(false);
+          startPoll();
+        });
+        socket.on("order:new", (event: { eventId: string; order: Order }) => {
+          if (!rememberEvent(seenEvents.current, event.eventId)) return;
+          setOrders((current) => (current.some((order) => order.id === event.order.id) ? current : [event.order, ...current]));
+          setStats((current) => {
+            if (!current || current.recent.some((order) => order.id === event.order.id)) return current;
+            return {
+              ...current,
+              totalOrders: current.totalOrders + 1,
+              pendingOrders: current.pendingOrders + (event.order.status === "PENDING" ? 1 : 0),
+              recent: [event.order, ...current.recent].slice(0, 8),
+            };
+          });
+          if (window.localStorage.getItem("pb-order-sound") === "1") beep();
+        });
+        socket.on("order:status", (event: { eventId: string; orderId: string; status: string }) => {
+          if (!rememberEvent(seenEvents.current, event.eventId)) return;
+          setOrders((current) => {
+            const next = current.map((order) => (order.id === event.orderId ? { ...order, status: event.status } : order));
+            setStats((stats) =>
+              stats
+                ? {
+                    ...stats,
+                    pendingOrders: next.filter((order) => order.status === "PENDING").length,
+                    recent: stats.recent.map((order) => (order.id === event.orderId ? { ...order, status: event.status } : order)),
+                  }
+                : stats,
+            );
+            return next;
+          });
+        });
+      })
+      .catch(() => startPoll());
+    return () => {
+      stopped = true;
+      stopPoll();
+      socket?.disconnect();
+    };
   }, []);
 
   async function updateStatus(id: string, status: string) {
@@ -89,7 +181,7 @@ export function AdminDashboard() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       <h1 className="font-display text-4xl sm:text-5xl">Restaurant</h1>
       {error ? <p className="mt-4 bg-white p-4 text-sm text-brand">{error}</p> : null}
-      <div className="mt-6 flex gap-2 overflow-x-auto">
+      <div className="mt-6 flex flex-wrap items-center gap-2">
         {[
           ["dashboard", "Übersicht"],
           ["orders", "Bestellungen"],
@@ -100,6 +192,18 @@ export function AdminDashboard() {
             {label}
           </button>
         ))}
+        <label className="ml-auto flex min-h-11 items-center gap-2 px-2 text-sm">
+          <input
+            type="checkbox"
+            checked={sound}
+            onChange={(event) => {
+              setSound(event.target.checked);
+              window.localStorage.setItem("pb-order-sound", event.target.checked ? "1" : "0");
+            }}
+          />
+          Ton bei neuer Bestellung
+        </label>
+        <span className="text-xs text-mute">{live ? "Live verbunden" : "Live getrennt"}</span>
       </div>
 
       {tab === "dashboard" && stats ? (
@@ -121,7 +225,7 @@ export function AdminDashboard() {
               {stats.recent.map((order) => (
                 <li key={order.id} className="flex flex-wrap justify-between gap-2 py-2">
                   <span>#{order.publicNumber} {order.customerFirstName} {order.customerLastName}</span>
-                  <span>{order.status} · {formatEuro(order.totalCents)}</span>
+                  <span>{statusLabel(order.status)} · {formatEuro(order.totalCents)}</span>
                 </li>
               ))}
             </ul>
@@ -135,12 +239,13 @@ export function AdminDashboard() {
             <article key={order.id} className="bg-white p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <h2 className="font-display text-2xl">#{order.publicNumber}</h2>
-                  <p className="text-sm text-mute">{order.customerFirstName} {order.customerLastName} · {order.customerPhone} · {order.fulfillment}</p>
-                  <p className="text-sm text-mute">{order.street} {order.postalCode} {order.city} {order.deliveryArea ? `· ${order.deliveryArea.locality}` : ""}</p>
+                  <h2 className="font-display text-2xl">{order.orderCode ?? `#${order.publicNumber}`}</h2>
+                  <p className="text-sm text-mute">{order.customerFirstName} {order.customerLastName} · {order.customerPhone} · {order.fulfillment === "DELIVERY" ? "Lieferung" : "Abholung"}</p>
+                  <p className="text-sm text-mute">{order.street}, {order.postalCode} {order.city} {order.deliveryArea ? `· ${order.deliveryArea.locality}` : ""}{typeof order.distanceKm === "number" ? ` · ${order.distanceKm.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} km` : ""}</p>
+                  <p className="text-sm text-mute">{new Date(order.createdAt).toLocaleString("de-DE")}</p>
                 </div>
                 <select value={order.status} onChange={(event) => void updateStatus(order.id, event.target.value)} className="border border-ink/15 px-2 py-2">
-                  {statuses.map((status) => <option key={status}>{status}</option>)}
+                  {ADMIN_STATUS_OPTIONS.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}
                 </select>
               </div>
               <ul className="mt-3 text-sm">
@@ -152,7 +257,7 @@ export function AdminDashboard() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-2 text-sm">Zahlung {order.payment?.method} · {order.payment?.status} · Gesamt {formatEuro(order.totalCents)}</p>
+              <p className="mt-2 text-sm">Zahlung {paymentMethodLabel[order.payment?.method ?? ""] ?? order.payment?.method} · {paymentStatusLabel[order.payment?.status ?? ""] ?? order.payment?.status} · Zwischensumme {formatEuro(order.subtotalCents)} · Lieferung {formatEuro(order.deliveryFeeCents)} · Gesamt {formatEuro(order.totalCents)}</p>
               {order.notes ? <p className="mt-1 text-sm text-mute">Hinweis: {order.notes}</p> : null}
             </article>
           ))}

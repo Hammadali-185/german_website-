@@ -1,19 +1,22 @@
 "use client";
 
 import { api } from "@/lib/api";
+import { openSocket, rememberEvent, type LiveSocket } from "@/lib/realtime";
 import { formatEuro } from "@/lib/format";
+import { statusLabel } from "@pizzablitz/shared";
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 type User = { id: string; email: string; firstName: string; lastName: string; phone: string; role: string };
 type Address = { id: string; label: string; street: string; postalCode: string; city: string };
-type Order = { id: string; publicNumber: number; status: string; totalCents: number; createdAt: string };
+type Order = { id: string; orderCode?: string; publicNumber: number; status: string; fulfillment: string; totalCents: number; createdAt: string };
 
 export function AccountPanel() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [error, setError] = useState("");
+  const seenEvents = useRef(new Set<string>());
 
   async function load(current: User) {
     const [nextAddresses, nextOrders] = await Promise.all([
@@ -24,6 +27,28 @@ export function AccountPanel() {
     setOrders(nextOrders);
     setUser(current);
   }
+
+  useEffect(() => {
+    if (!user?.id) return;
+    let stopped = false;
+    let socket: LiveSocket | null = null;
+    const current = user;
+    api<{ token: string }>("/api/realtime/ticket", { method: "POST", body: "{}" })
+      .then((ticket) => {
+        if (stopped) return;
+        socket = openSocket({ ticket: ticket.token });
+        socket.on("connect", () => void load(current));
+        socket.on("order:status", (event: { eventId: string; orderId: string; status: string }) => {
+          if (!rememberEvent(seenEvents.current, event.eventId)) return;
+          setOrders((orders) => orders.map((order) => (order.id === event.orderId ? { ...order, status: event.status } : order)));
+        });
+      })
+      .catch(() => undefined);
+    return () => {
+      stopped = true;
+      socket?.disconnect();
+    };
+  }, [user?.id]);
 
   useEffect(() => {
     api<{ user: User | null }>("/api/auth/me")
@@ -102,7 +127,7 @@ export function AccountPanel() {
         <ul className="mt-3 space-y-2 text-sm">
           {orders.length === 0 ? <li className="text-mute">Noch keine Bestellungen.</li> : null}
           {orders.map((order) => (
-            <li key={order.id} className="bg-white px-3 py-2">#{order.publicNumber} · {order.status} · {formatEuro(order.totalCents)}</li>
+            <li key={order.id} className="bg-white px-3 py-2">{order.orderCode ?? `#${order.publicNumber}`} · {statusLabel(order.status, order.fulfillment)} · {formatEuro(order.totalCents)}</li>
           ))}
         </ul>
         {user.role === "ADMIN" ? <Link href="/admin" className="mt-6 inline-block text-brand">Zum Admin</Link> : null}

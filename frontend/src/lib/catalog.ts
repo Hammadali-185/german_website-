@@ -6,6 +6,23 @@ import type { Category, Product, Restaurant, SiteContent, Variant } from "@/type
 const backend = process.env.BACKEND_URL ?? "http://localhost:4000";
 const dataDir = path.join(process.cwd(), "..", "data");
 
+const offerImages: Record<string, string> = {
+  "220": "/images/offers/220.jpg",
+  "221": "/images/offers/221.jpg",
+  "222": "/images/offers/222.jpg",
+  "223": "/images/offers/223.jpg",
+  "224": "/images/offers/224.jpg",
+  "225": "/images/offers/225.jpg",
+  "226": "/images/offers/226.jpg",
+  "227": "/images/offers/227.jpg",
+  "228": "/images/offers/228.jpg",
+};
+
+function withOfferImage<T extends { sku: string; isOffer: boolean; image: string | null }>(product: T): T {
+  if (!product.isOffer) return product;
+  return { ...product, image: offerImages[product.sku] ?? product.image };
+}
+
 async function readJson<T>(name: string): Promise<T> {
   return JSON.parse(await readFile(path.join(dataDir, name), "utf8")) as T;
 }
@@ -67,7 +84,7 @@ function fromFileProduct(product: {
     allergenCodes: product.allergenCodes ?? "",
     available: true,
     isOffer: product.isOffer,
-    image: category?.image ?? null,
+    image: product.isOffer ? (offerImages[product.sku] ?? category?.image ?? null) : (category?.image ?? null),
     category: { slug: product.categorySlug, name: category?.name ?? product.categorySlug },
     fromPriceCents: Math.min(...variants.map((variant) => variant.priceCents)),
     customizable: variants.length > 1 || variants.some((variant) => variant.choiceGroups.length > 0 || variant.extras.length > 0),
@@ -106,7 +123,7 @@ export async function loadSite(): Promise<SiteContent> {
         source: "api",
         restaurant: withOpen(restaurant),
         categories,
-        products,
+        products: products.map(withOfferImage),
       };
     }
   } catch {

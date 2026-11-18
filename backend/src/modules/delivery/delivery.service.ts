@@ -1,4 +1,4 @@
-import { evaluateFulfillment, isRestaurantOpen, type OpeningHour } from "@pizzablitz/shared";
+import { distanceKm, evaluateFulfillment, isRestaurantOpen, OUTSIDE_DELIVERY_RADIUS_MESSAGE, withinDeliveryRadius, type OpeningHour } from "@pizzablitz/shared";
 import { prisma } from "../../database/prisma.js";
 import { HttpError } from "../../utils/http.js";
 
@@ -46,6 +46,8 @@ export async function assertOrderAllowed(input: {
   subtotalCents: number;
   deliveryAreaId?: string;
   postalCode?: string;
+  latitude?: number;
+  longitude?: number;
 }) {
   const restaurant = await prisma.restaurant.findFirst({ include: { hours: true } });
   if (!restaurant) throw new HttpError(503, "Restaurantdaten sind noch nicht geladen.", "NOT_READY");
@@ -66,7 +68,17 @@ export async function assertOrderAllowed(input: {
       pickupMinimumCents: restaurant.pickupMinimumCents,
     });
     if (!decision.ok) throw new HttpError(400, decision.message, decision.code);
-    return { decision, areaId: null as string | null };
+    return { decision, areaId: null as string | null, distanceKm: null as number | null };
+  }
+
+  if (typeof input.latitude !== "number" || typeof input.longitude !== "number") {
+    throw new HttpError(400, "Bitte eine Adresse aus den Vorschlägen auswählen.", "ADDRESS");
+  }
+  const destination = { latitude: input.latitude, longitude: input.longitude };
+  const shop = { latitude: restaurant.latitude, longitude: restaurant.longitude };
+  const kilometers = Math.round(distanceKm(shop, destination) * 10) / 10;
+  if (!withinDeliveryRadius(shop, destination)) {
+    throw new HttpError(400, OUTSIDE_DELIVERY_RADIUS_MESSAGE, "RADIUS");
   }
 
   if (!input.deliveryAreaId) throw new HttpError(400, "Bitte ein Liefergebiet wählen.", "AREA");
@@ -81,5 +93,5 @@ export async function assertOrderAllowed(input: {
     pickupMinimumCents: restaurant.pickupMinimumCents,
   });
   if (!decision.ok) throw new HttpError(400, decision.message, decision.code);
-  return { decision, areaId: area.id };
+  return { decision, areaId: area.id, distanceKm: kilometers };
 }

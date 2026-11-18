@@ -1,15 +1,18 @@
 "use client";
 
+import { AddressLookup, type AddressSuggestion } from "@/components/delivery/AddressLookup";
 import { api } from "@/lib/api";
+import { openSocket, type LiveSocket } from "@/lib/realtime";
 import { formatEuro } from "@/lib/format";
 import { priceCartLine, useCart } from "@/store/cart";
 import type { Restaurant } from "@/types/catalog";
+import { customerStatusMessage, OUTSIDE_DELIVERY_RADIUS_MESSAGE, statusLabel, withinDeliveryRadius } from "@pizzablitz/shared";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Method = { method: "CASH" | "PAYPAL" | "CARD" | "SOFORT"; label: string; available: boolean; reason: string | null };
 type Area = { id: string; postalCode: string; locality: string; minimumOrderCents: number; deliveryFeeCents: number | null };
-type Quote = { subtotalCents: number; deliveryFeeCents: number; totalCents: number; minimumOrderCents: number };
+type Quote = { subtotalCents: number; deliveryFeeCents: number; totalCents: number; minimumOrderCents: number; distanceKm?: number | null };
 
 const steps = ["Lieferung", "Kontakt", "Adresse", "Hinweise", "Zahlung", "Prüfen"];
 
@@ -21,6 +24,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
   const [fulfillment, setFulfillment] = useState<"DELIVERY" | "PICKUP">("DELIVERY");
   const [customer, setCustomer] = useState({ firstName: "", lastName: "", email: "", phone: "" });
   const [address, setAddress] = useState({ street: "", postalCode: "", city: "" });
+  const [place, setPlace] = useState<AddressSuggestion | null>(null);
   const [areaId, setAreaId] = useState("");
   const [areas, setAreas] = useState<Area[]>([]);
   const [notes, setNotes] = useState("");
@@ -29,6 +33,11 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
   const [quote, setQuote] = useState<Quote | null>(null);
   const [error, setError] = useState("");
   const [orderNumber, setOrderNumber] = useState<number | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
+  const [orderStatus, setOrderStatus] = useState("PENDING");
+  const [trackingToken, setTrackingToken] = useState<string | null>(null);
+  const [live, setLive] = useState(false);
+  const idempotencyKey = useRef(crypto.randomUUID());
   const [submitting, setSubmitting] = useState(false);
   const subtotal = useMemo(() => lines.reduce((sum, line) => sum + priceCartLine(line).lineTotalCents, 0), [lines]);
   const matches = areas.filter((area) => area.postalCode === address.postalCode);
@@ -37,6 +46,50 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
     setHydrated(useCart.persist.hasHydrated());
     return useCart.persist.onFinishHydration(() => setHydrated(true));
   }, []);
+
+  useEffect(() => {
+    if (!trackingToken || !orderId) return;
+    let stopped = false;
+    let socket: LiveSocket | null = null;
+    let poll = 0;
+    const refresh = async () => {
+      try {
+        const order = await api<{ status: string }>(`/api/orders/track/${trackingToken}`);
+        if (!stopped) setOrderStatus(order.status);
+      } catch {
+        // The confirmation stays visible if a status refresh fails.
+      }
+    };
+    const startPoll = () => {
+      if (!poll) poll = window.setInterval(() => void refresh(), 15000);
+    };
+    socket = openSocket({ trackingToken });
+    socket.on("connect", () => {
+      setLive(true);
+      if (poll) window.clearInterval(poll);
+      poll = 0;
+      void refresh();
+      socket?.emit("order:watch", { orderId, trackingToken });
+    });
+    socket.on("disconnect", () => {
+      setLive(false);
+      void refresh();
+      startPoll();
+    });
+    socket.on("connect_error", () => {
+      setLive(false);
+      startPoll();
+    });
+    socket.on("order:status", (event: { orderId: string; status: string }) => {
+      if (event.orderId === orderId) setOrderStatus(event.status);
+    });
+    return () => {
+      stopped = true;
+      if (poll) window.clearInterval(poll);
+      socket?.disconnect();
+      setLive(false);
+    };
+  }, [trackingToken, orderId]);
 
   useEffect(() => {
     api<Area[]>("/api/delivery/areas")
@@ -56,6 +109,8 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
           fulfillment,
           postalCode: address.postalCode,
           deliveryAreaId: fulfillment === "DELIVERY" ? areaId : undefined,
+          latitude: place?.latitude,
+          longitude: place?.longitude,
           items: lines.map((line) => ({
             productId: line.productId,
             variantId: line.variantId,
@@ -76,14 +131,15 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
     setSubmitting(true);
     setError("");
     try {
-      const order = await api<{ publicNumber: number }>("/api/orders", {
+      const order = await api<{ id: string; publicNumber: number; status: string; trackingToken?: string }>("/api/orders", {
         method: "POST",
         body: JSON.stringify({
           fulfillment,
+          idempotencyKey: idempotencyKey.current,
           postalCode: address.postalCode,
           deliveryAreaId: fulfillment === "DELIVERY" ? areaId : undefined,
           customer,
-          address,
+          address: fulfillment === "DELIVERY" ? { ...address, latitude: place?.latitude, longitude: place?.longitude } : { street: "", postalCode: "", city: "" },
           notes,
           paymentMethod,
           items: lines.map((line) => ({
@@ -96,6 +152,9 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
         }),
       });
       setOrderNumber(order.publicNumber);
+      setOrderId(order.id);
+      setOrderStatus(order.status);
+      setTrackingToken(order.trackingToken ?? null);
       clear();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Die Bestellung wurde nicht gespeichert.");
@@ -110,9 +169,10 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
         <p className="text-xs uppercase tracking-[0.2em] text-brand">Bestellung aufgenommen</p>
         <h1 className="mt-3 font-display text-5xl">Nr. {orderNumber}</h1>
         <p className="mt-4 text-mute">
-          Die Bestellung ist gespeichert und wartet auf Bestätigung im Restaurant. Bei Barzahlung wird der Betrag bei Übergabe kassiert. Es wurde keine Online-Zahlung ausgeführt
-          {restaurant.email ? "." : " und keine E-Mail verschickt, weil keine Restaurant-E-Mail hinterlegt ist."}
+          {customerStatusMessage(orderStatus, fulfillment)} Der Status wird hier aktualisiert. Es wird keine E-Mail und keine SMS verschickt. Bei Barzahlung wird der Betrag bei Übergabe kassiert.
         </p>
+        <p className="mt-3 text-sm">{statusLabel(orderStatus, fulfillment)}</p>
+        <p className="mt-1 text-xs text-mute">{live ? "Live verbunden" : "Live getrennt, der Status wird weiterhin abgefragt."}</p>
         <Link href="/menu" className="mt-8 inline-block bg-brand px-5 py-3 text-sm font-semibold text-white">
           Zurück zur Karte
         </Link>
@@ -162,7 +222,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {(["firstName", "lastName", "email", "phone"] as const).map((field) => (
               <label key={field} className="text-sm">
-                {field === "firstName" ? "Vorname" : field === "lastName" ? "Nachname" : field === "email" ? "E-Mail" : "Telefon"}
+                {field === "firstName" ? "Vorname" : field === "lastName" ? "Nachname" : field === "email" ? "E-Mail (optional)" : "Telefon"}
                 <input className="mt-1 w-full border border-ink/15 px-3 py-3" value={customer[field]} onChange={(event) => setCustomer({ ...customer, [field]: event.target.value })} />
               </label>
             ))}
@@ -173,11 +233,23 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
           <div className="mt-6 grid gap-3">
             {fulfillment === "DELIVERY" ? (
               <>
-                <input className="border border-ink/15 px-3 py-3" placeholder="Straße und Hausnummer" value={address.street} onChange={(event) => setAddress({ ...address, street: event.target.value })} />
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <input className="border border-ink/15 px-3 py-3" placeholder="PLZ" value={address.postalCode} onChange={(event) => setAddress({ ...address, postalCode: event.target.value.replace(/\D/g, "").slice(0, 5) })} />
-                  <input className="border border-ink/15 px-3 py-3" placeholder="Ort" value={address.city} onChange={(event) => setAddress({ ...address, city: event.target.value })} />
-                </div>
+                <AddressLookup
+                  shop={restaurant}
+                  selected={place}
+                  onClear={() => {
+                    setPlace(null);
+                    setAddress({ street: "", postalCode: "", city: "" });
+                    setAreaId("");
+                  }}
+                  onSelect={(suggestion) => {
+                    setPlace(suggestion);
+                    setAddress({ street: suggestion.street, postalCode: suggestion.postalCode, city: suggestion.city });
+                    const postalMatches = areas.filter((area) => area.postalCode === suggestion.postalCode);
+                    const cityMatch = postalMatches.find((area) => area.locality.toLowerCase() === suggestion.city.toLowerCase());
+                    setAreaId(cityMatch?.id ?? (postalMatches.length === 1 ? postalMatches[0].id : ""));
+                  }}
+                />
+                {place && withinDeliveryRadius(restaurant, place) ? (
                 <div className="grid gap-2">
                   {matches.map((area) => (
                     <button key={area.id} type="button" onClick={() => setAreaId(area.id)} className={`border px-3 py-3 text-left text-sm ${areaId === area.id ? "border-brand" : "border-ink/10"}`}>
@@ -185,8 +257,10 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                       {area.deliveryFeeCents == null ? " · keine veröffentlichte Liefergebühr" : ` · ${formatEuro(area.deliveryFeeCents)} Liefergebühr`}
                     </button>
                   ))}
-                  {address.postalCode.length === 5 && matches.length === 0 ? <p className="text-sm text-brand">Diese Postleitzahl ist nicht im Liefergebiet.</p> : null}
+                  {address.postalCode.length === 5 && matches.length === 0 ? <p className="text-sm text-brand">Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.</p> : null}
+                  {matches.length > 1 && !areaId ? <p className="text-sm text-mute">Bitte den passenden Ort auswählen.</p> : null}
                 </div>
+                ) : null}
               </>
             ) : (
               <p className="bg-white p-4 text-sm">Abholung bei {restaurant.tradeName}, {restaurant.street}, {restaurant.postalCode} {restaurant.city}.</p>
@@ -216,6 +290,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
             <p className="mt-2 flex justify-between text-sm"><span>Liefergebühr</span><span>{formatEuro(quote.deliveryFeeCents)}</span></p>
             <p className="mt-4 flex flex-wrap items-end justify-between gap-2 font-display text-3xl"><span>Gesamt</span><span>{formatEuro(quote.totalCents)}</span></p>
             <p className="mt-3 text-xs text-mute">Der Betrag wurde vom Server aus der aktuellen Karte berechnet.</p>
+            {quote.distanceKm != null ? <p className="mt-2 text-sm text-mute">Entfernung zum Shop: {quote.distanceKm.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} km</p> : null}
           </div>
         ) : null}
 
@@ -227,13 +302,36 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
               type="button"
               className="min-h-12 bg-ink px-4 text-cream sm:w-auto"
               onClick={() => {
-                if (step === 1 && (!customer.firstName || !customer.lastName || !customer.email || customer.phone.length < 6)) {
-                  setError("Bitte die Kontaktdaten vollständig ausfüllen.");
-                  return;
+                if (step === 1) {
+                  const email = customer.email.trim();
+                  const phone = customer.phone.trim();
+                  const digits = phone.replace(/\D/g, "");
+                  if (!customer.firstName.trim() || !customer.lastName.trim()) {
+                    setError("Bitte Vorname und Nachname ausfüllen.");
+                    return;
+                  }
+                  if (digits.length < 6 || digits.length > 15 || !/^\+?[0-9][0-9\s()/-]*$/.test(phone)) {
+                    setError("Bitte eine gültige Telefonnummer angeben.");
+                    return;
+                  }
+                  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    setError("Die E-Mail-Adresse ist ungültig.");
+                    return;
+                  }
                 }
-                if (step === 2 && fulfillment === "DELIVERY" && (address.street.length < 3 || !areaId)) {
-                  setError("Bitte Straße und Liefergebiet wählen.");
-                  return;
+                if (step === 2 && fulfillment === "DELIVERY") {
+                  if (!place) {
+                    setError("Bitte eine Adresse aus den Vorschlägen auswählen.");
+                    return;
+                  }
+                  if (!withinDeliveryRadius(restaurant, place)) {
+                    setError(OUTSIDE_DELIVERY_RADIUS_MESSAGE);
+                    return;
+                  }
+                  if (!areaId) {
+                    setError("Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.");
+                    return;
+                  }
                 }
                 setError("");
                 setStep((value) => value + 1);

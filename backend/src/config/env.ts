@@ -29,3 +29,4 @@ export const env = schema.parse({
 });
 
 export const secureCookies = env.SECURE_COOKIES === "true";
+export const clientOrigins = env.CLIENT_ORIGIN.split(",").map((origin) => origin.trim()).filter(Boolean);

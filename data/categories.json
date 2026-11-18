@@ -5,7 +5,7 @@
     "sourceName": "Angebot",
     "publishedCount": 9,
     "image": "/images/original/angebot.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/Sparmenue.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1571066811602-716837d681de?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 0
   },
   {
@@ -50,7 +50,7 @@
     "sourceName": "Calzone",
     "publishedCount": 6,
     "image": "/images/original/calzone.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Pizza-icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1536964549204-cce9eab227bd?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 5
   },
   {
@@ -59,7 +59,7 @@
     "sourceName": "Pizzabrötchen",
     "publishedCount": 8,
     "image": "/images/original/pizzabroetchen.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Pizza-icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1506280754576-f6fa8a873550?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 6
   },
   {
@@ -113,7 +113,7 @@
     "sourceName": "Beilagen und Sauce",
     "publishedCount": 10,
     "image": "/images/original/beilagen-und-sauce.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 12
   },
   {
@@ -131,7 +131,7 @@
     "sourceName": "Dessert",
     "publishedCount": 6,
     "image": "/images/original/dessert.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 14
   },
   {
@@ -158,7 +158,7 @@
     "sourceName": "Indisches",
     "publishedCount": 10,
     "image": "/images/original/indisches.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/kategorien/biryani.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 17
   },
   {
@@ -167,7 +167,7 @@
     "sourceName": "Gyros",
     "publishedCount": 5,
     "image": "/images/original/gyros.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 18
   },
   {
@@ -176,7 +176,7 @@
     "sourceName": "Dönergerichte",
     "publishedCount": 3,
     "image": "/images/original/doenergerichte.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Menue_icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 19
   },
   {
@@ -185,7 +185,7 @@
     "sourceName": "Burger - Fast food Menü",
     "publishedCount": 19,
     "image": "/images/original/burger---fast-food-menue.jpg",
-    "imageSource": "https://www.pizzablitz.online/image/data/images/Burger_icon.jpg",
+    "imageSource": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=1600&q=80",
     "sortOrder": 20
   },
   {

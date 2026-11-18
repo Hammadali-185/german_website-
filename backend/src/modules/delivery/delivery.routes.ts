@@ -2,6 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { asyncRoute } from "../../utils/http.js";
 import { checkDelivery, listDeliveryAreas } from "./delivery.service.js";
+import { suggestAddresses } from "./geocode.service.js";
 
 const checkSchema = z.object({
   postalCode: z.string().trim().regex(/^\d{5}$/, "Bitte eine fünfstellige Postleitzahl eingeben."),
@@ -24,6 +25,14 @@ deliveryRouter.get(
         deliveryFeeCents: area.deliveryFeeCents,
       })),
     );
+  }),
+);
+
+deliveryRouter.get(
+  "/delivery/suggest",
+  asyncRoute(async (req, res) => {
+    const query = z.string().trim().min(2).max(120).parse(req.query.q);
+    res.json({ suggestions: await suggestAddresses(query) });
   }),
 );
 

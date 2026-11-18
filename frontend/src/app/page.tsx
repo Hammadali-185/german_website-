@@ -42,7 +42,7 @@ export default async function HomePage() {
                 <img
                   src={category.image}
                   alt=""
-                  className={`h-full w-full transition duration-700 group-hover:scale-110 ${category.slug === "angebot" ? "object-contain" : "object-cover"}`}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
               ) : null}
               <span className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
@@ -118,9 +118,9 @@ export default async function HomePage() {
       <section className="mx-auto mt-16 grid max-w-7xl gap-6 px-4 pb-16 sm:px-6 lg:grid-cols-2">
         <div>
           <h2 className="font-display text-4xl">Liefern oder abholen</h2>
-          <p className="mt-3 text-mute">Die Prüfung nutzt die 51 veröffentlichten Orte und ihre Mindestbestellwerte. Eine Liefergebühr wird nur berechnet, wenn sie hinterlegt ist.</p>
+          <p className="mt-3 text-mute">Die Lieferung gilt im Umkreis von 20 km und nur in den veröffentlichten Orten. Eine Liefergebühr wird nur berechnet, wenn sie hinterlegt ist.</p>
         </div>
-        <DeliveryChecker areas={areas} />
+        <DeliveryChecker areas={areas} shop={site.restaurant} />
       </section>
       </div>
     </div>

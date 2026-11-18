@@ -3,6 +3,8 @@ import { z } from "zod";
 import { prisma } from "../../database/prisma.js";
 import { requireAdmin } from "../../middleware/auth.js";
 import { asyncRoute, HttpError } from "../../utils/http.js";
+import { listAdminNotifications, markAdminNotificationsRead } from "../orders/notifications.service.js";
+import { presentOrder, updateOrderStatus } from "../orders/orders.service.js";
 
 const statusSchema = z.object({
   status: z.enum([
@@ -97,7 +99,7 @@ adminRouter.get(
       pendingOrders,
       completedOrders,
       dailySalesCents: todayOrders.reduce((sum, order) => sum + order.totalCents, 0),
-      recent,
+      recent: recent.map((order) => presentOrder(order)),
     });
   }),
 );
@@ -105,13 +107,17 @@ adminRouter.get(
 adminRouter.get(
   "/orders",
   asyncRoute(async (_req, res) => {
-    res.json(
-      await prisma.order.findMany({
-        orderBy: { createdAt: "desc" },
-        take: 200,
-        include: { items: true, payment: true, deliveryArea: true },
-      }),
-    );
+    const orders = await prisma.order.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 200,
+      include: {
+        items: true,
+        payment: true,
+        deliveryArea: true,
+        statusEvents: { orderBy: { createdAt: "asc" } },
+      },
+    });
+    res.json(orders.map((order) => presentOrder(order)));
   }),
 );
 
@@ -119,9 +125,22 @@ adminRouter.patch(
   "/orders/:id",
   asyncRoute(async (req, res) => {
     const body = statusSchema.parse(req.body);
-    const existing = await prisma.order.findUnique({ where: { id: req.params.id } });
-    if (!existing) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
-    res.json(await prisma.order.update({ where: { id: existing.id }, data: { status: body.status }, include: { payment: true } }));
+    res.json(await updateOrderStatus(req.params.id, body.status));
+  }),
+);
+
+adminRouter.get(
+  "/notifications",
+  asyncRoute(async (_req, res) => {
+    res.json(await listAdminNotifications());
+  }),
+);
+
+adminRouter.post(
+  "/notifications/read",
+  asyncRoute(async (req, res) => {
+    const body = z.object({ ids: z.array(z.string().min(1)).max(50).optional() }).parse(req.body ?? {});
+    res.json(await markAdminNotificationsRead(body.ids));
   }),
 );
 

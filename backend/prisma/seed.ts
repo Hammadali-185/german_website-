@@ -61,6 +61,13 @@ async function main() {
   if (products.length !== 236) {
     throw new Error(`Expected 236 products, found ${products.length}`);
   }
+  const menuProducts = new Map<string, SourceProduct>();
+  for (const product of products) {
+    const key = `${product.categorySlug}|${product.sku}`;
+    const current = menuProducts.get(key);
+    if (!current || (product.description && !current.description)) menuProducts.set(key, product);
+  }
+  const uniqueProducts = [...menuProducts.values()].filter((product) => product.variants.length > 0);
   if (categories.length !== 22) {
     throw new Error(`Expected 22 categories, found ${categories.length}`);
   }
@@ -132,7 +139,15 @@ async function main() {
   });
 
   await prisma.deliveryArea.createMany({ data: areas });
-  await prisma.category.createMany({ data: categories });
+  await prisma.category.createMany({
+    data: categories.map((category) => ({
+      slug: category.slug,
+      name: category.name,
+      image: category.image,
+      sortOrder: category.sortOrder,
+      publishedCount: category.publishedCount,
+    })),
+  });
   const categoryRows = await prisma.category.findMany();
   const categoryId = new Map(categoryRows.map((category) => [category.slug, category.id]));
 
@@ -152,7 +167,7 @@ async function main() {
 
   const variantExtras: { variantId: string; extraId: string; priceCents: number }[] = [];
   let sort = 0;
-  for (const product of products) {
+  for (const product of uniqueProducts) {
     const category = categoryId.get(product.categorySlug);
     if (!category) throw new Error(`Missing category ${product.categorySlug}`);
     if (!product.variants.length) throw new Error(`Product ${product.sku} has no variants`);
@@ -240,7 +255,7 @@ async function main() {
     areas: await prisma.deliveryArea.count(),
   };
   console.log(counts);
-  if (counts.products !== 236 || counts.categories !== 22 || counts.areas !== 51) {
+  if (counts.products !== uniqueProducts.length || counts.categories !== 22 || counts.areas !== 51) {
     throw new Error("Seed counts do not match the extraction.");
   }
 }
