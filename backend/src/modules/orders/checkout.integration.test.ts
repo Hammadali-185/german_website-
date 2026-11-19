@@ -1,9 +1,10 @@
 import "../../config/load-env.js";
-import { OUTSIDE_DELIVERY_RADIUS_MESSAGE } from "@pizzablitz/shared";
+import { berlinClock, OUTSIDE_DELIVERY_RADIUS_MESSAGE } from "@pizzablitz/shared";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { prisma } from "../../database/prisma.js";
 import { HttpError } from "../../utils/http.js";
 import { presentOrder, createOrder, getOwnOrder } from "./orders.service.js";
+import { restoreOpeningFixture } from "./test-hours.js";
 import { orderSchema } from "./orders.schema.js";
 
 const keys: string[] = [];
@@ -29,13 +30,14 @@ describe("checkout lifecycle", () => {
     const found = await prisma.restaurant.findFirst({ include: { hours: true } });
     if (!found) throw new Error("Restaurant ist nicht in der Datenbank.");
     restaurant = found;
-    const wednesday = found.hours.find((hour) => hour.day === "WEDNESDAY");
-    if (wednesday) {
-      previousHour = { id: wednesday.id, opens: wednesday.opens, closes: wednesday.closes };
-      await prisma.openingHours.update({ where: { id: wednesday.id }, data: { opens: "00:00", closes: "23:59" } });
+    const today = berlinClock(new Date()).day;
+    const currentHour = found.hours.find((hour) => hour.day === today);
+    if (currentHour) {
+      previousHour = { id: currentHour.id, opens: currentHour.opens, closes: currentHour.closes };
+      await prisma.openingHours.update({ where: { id: currentHour.id }, data: { opens: "00:00", closes: "23:59" } });
     } else {
       const created = await prisma.openingHours.create({
-        data: { restaurantId: found.id, day: "WEDNESDAY", label: "Mittwoch", opens: "00:00", closes: "23:59" },
+        data: { restaurantId: found.id, day: today, label: today, opens: "00:00", closes: "23:59" },
       });
       createdHourId = created.id;
     }
@@ -58,12 +60,8 @@ describe("checkout lifecycle", () => {
 
   afterAll(async () => {
     try {
+      await restoreOpeningFixture({ previousHour, createdHourId, restaurant });
       if (keys.length) await prisma.order.deleteMany({ where: { idempotencyKey: { in: keys } } });
-      if (previousHour) {
-        await prisma.openingHours.update({ where: { id: previousHour.id }, data: { opens: previousHour.opens, closes: previousHour.closes } });
-      }
-      if (createdHourId) await prisma.openingHours.delete({ where: { id: createdHourId } });
-      if (restaurant) await prisma.restaurant.update({ where: { id: restaurant.id }, data: { holidayMode: restaurant.holidayMode } });
     } finally {
       await prisma.$disconnect();
     }

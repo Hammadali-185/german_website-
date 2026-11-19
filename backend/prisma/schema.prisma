@@ -43,6 +43,11 @@ enum PaymentStatus {
   FAILED
 }
 
+enum CouponType {
+  PERCENT
+  FIXED
+}
+
 enum NotificationAudience {
   CUSTOMER
   ADMIN
@@ -118,8 +123,10 @@ model Restaurant {
   logo                String
   yearsClaim          String
   timezone            String
-  pickupMinimumCents  Int            @default(0)
-  holidayMode         Boolean        @default(false)
+  pickupMinimumCents    Int            @default(0)
+  preparationMinutes    Int?
+  deliveryMinutesPerKm  Int?
+  holidayMode           Boolean        @default(false)
   hours               OpeningHours[]
 }
 
@@ -161,6 +168,7 @@ model Product {
   sku              String
   name             String
   description      String           @db.Text
+  image            String?
   allergenCodes    String           @default("")
   available        Boolean          @default(true)
   isOffer          Boolean          @default(false)
@@ -228,6 +236,37 @@ model VariantExtra {
   @@id([variantId, extraId])
 }
 
+model Coupon {
+  id                    String             @id @default(cuid())
+  code                  String             @unique
+  type                  CouponType
+  percentOff            Int?
+  amountOffCents        Int?
+  minimumSubtotalCents  Int                @default(0)
+  startsAt              DateTime?
+  endsAt                DateTime?
+  active                Boolean            @default(true)
+  maxRedemptions        Int?
+  perCustomerLimit      Int?
+  createdAt             DateTime           @default(now())
+  redemptions           CouponRedemption[]
+}
+
+model CouponRedemption {
+  id             String   @id @default(cuid())
+  couponId       String
+  coupon         Coupon   @relation(fields: [couponId], references: [id], onDelete: Restrict)
+  orderId        String   @unique
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  codeSnapshot   String
+  summary        String
+  discountCents  Int
+  customerKey    String
+  createdAt      DateTime @default(now())
+
+  @@index([couponId, customerKey])
+}
+
 model Promotion {
   id                  String  @id @default(cuid())
   slug                String  @unique
@@ -261,17 +300,25 @@ model Order {
   deliveryArea       DeliveryArea?   @relation(fields: [deliveryAreaId], references: [id], onDelete: SetNull)
   notes              String          @default("")
   subtotalCents      Int
+  discountCents      Int             @default(0)
+  couponCode         String?
+  couponSummary      String?
   deliveryFeeCents   Int
   totalCents         Int
   minimumOrderCents  Int
+  promisedAt         DateTime?
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
   items              OrderItem[]
   payment            Payment?
+  couponRedemption   CouponRedemption?
   statusEvents       OrderStatusEvent[]
   notifications      Notification[]
 
   @@index([userId, createdAt])
+  @@index([createdAt])
+  @@index([status, createdAt])
+  @@index([fulfillment, createdAt])
 }
 
 model RealtimeOutbox {
@@ -340,6 +387,7 @@ model Payment {
   method            PaymentMethod
   status            PaymentStatus
   providerReference String?
+  paidAt            DateTime?
   createdAt         DateTime      @default(now())
 }
 

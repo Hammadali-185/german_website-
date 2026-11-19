@@ -1,10 +1,15 @@
+"use client";
+
 import { MapPin } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { DAY_LABELS } from "@/lib/format";
 import { googleDirectionsUrl } from "@/lib/maps";
 import type { Restaurant } from "@/types/catalog";
 
 export function SiteFooter({ restaurant }: { restaurant: Restaurant }) {
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return null;
   return (
     <footer className="mt-8 border-t-4 border-brand bg-forest text-cream">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">

@@ -4,7 +4,14 @@ import { prisma } from "../../database/prisma.js";
 import { requireAdmin } from "../../middleware/auth.js";
 import { asyncRoute, HttpError } from "../../utils/http.js";
 import { listAdminNotifications, markAdminNotificationsRead } from "../orders/notifications.service.js";
-import { presentOrder, updateOrderStatus } from "../orders/orders.service.js";
+import { collectCashPayment, presentOrder, updateOrderStatus } from "../orders/orders.service.js";
+import { getAnalytics } from "./analytics.service.js";
+import { couponRedemptions, deleteUnusedCoupon, listCoupons, normalizeCouponCode } from "./coupons.service.js";
+import { getAdminOrder, listAdminOrders, listDeliveries, type DeliveryQueue } from "./order-query.js";
+import { getReport, reportCsv } from "./reports.service.js";
+import { systemStatus } from "./system.service.js";
+import { cleanImageUrl, deleteCategory, listCategories, listExtras, listProducts, listVariants, renameExtra, updateVariant } from "./catalog.service.js";
+import { customerOrders, listCustomers } from "./customers.service.js";
 
 const statusSchema = z.object({
   status: z.enum([
@@ -24,6 +31,7 @@ const productSchema = z.object({
   sku: z.string().trim().min(1),
   name: z.string().trim().min(1),
   description: z.string().default(""),
+  image: z.string().trim().max(500).nullable().optional(),
   allergenCodes: z.string().default(""),
   available: z.boolean().default(true),
   isOffer: z.boolean().default(false),
@@ -104,20 +112,149 @@ adminRouter.get(
   }),
 );
 
+const analyticsQuery = z.object({
+  preset: z.enum(["today", "7d", "30d", "month", "custom"]).default("today"),
+  from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  granularity: z.enum(["day", "week", "month"]).default("day"),
+});
+
+adminRouter.get(
+  "/reports",
+  asyncRoute(async (req, res) => {
+    res.json(await getReport(analyticsQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.get(
+  "/reports.csv",
+  asyncRoute(async (req, res) => {
+    const file = await reportCsv(analyticsQuery.parse(req.query));
+    res.setHeader("content-type", "text/csv; charset=utf-8");
+    res.setHeader("content-disposition", `attachment; filename="${file.filename}"`);
+    res.setHeader("x-content-type-options", "nosniff");
+    res.send(file.body);
+  }),
+);
+
+adminRouter.get(
+  "/system",
+  asyncRoute(async (_req, res) => {
+    res.json(systemStatus());
+  }),
+);
+
+const couponBody = z.object({
+  code: z.string().trim().min(3).max(32),
+  type: z.enum(["PERCENT", "FIXED"]),
+  percentOff: z.number().int().min(1).max(100).nullable().optional(),
+  amountOffCents: z.number().int().positive().nullable().optional(),
+  minimumSubtotalCents: z.number().int().nonnegative().default(0),
+  startsAt: z.string().datetime().nullable().optional(),
+  endsAt: z.string().datetime().nullable().optional(),
+  active: z.boolean().default(true),
+  maxRedemptions: z.number().int().positive().nullable().optional(),
+  perCustomerLimit: z.number().int().positive().nullable().optional(),
+});
+
+function couponData(body: z.infer<typeof couponBody>) {
+  if (body.type === "PERCENT" && body.percentOff == null) throw new HttpError(400, "Der Prozentsatz fehlt.", "COUPON");
+  if (body.type === "FIXED" && body.amountOffCents == null) throw new HttpError(400, "Der Festbetrag fehlt.", "COUPON");
+  return {
+    code: normalizeCouponCode(body.code),
+    type: body.type,
+    percentOff: body.type === "PERCENT" ? body.percentOff ?? null : null,
+    amountOffCents: body.type === "FIXED" ? body.amountOffCents ?? null : null,
+    minimumSubtotalCents: body.minimumSubtotalCents,
+    startsAt: body.startsAt ? new Date(body.startsAt) : null,
+    endsAt: body.endsAt ? new Date(body.endsAt) : null,
+    active: body.active,
+    maxRedemptions: body.maxRedemptions ?? null,
+    perCustomerLimit: body.perCustomerLimit ?? null,
+  };
+}
+
+adminRouter.get(
+  "/coupons",
+  asyncRoute(async (req, res) => {
+    res.json(await listCoupons(pageQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.post(
+  "/coupons",
+  asyncRoute(async (req, res) => {
+    const data = couponData(couponBody.parse(req.body));
+    res.status(201).json(await prisma.coupon.create({ data }));
+  }),
+);
+
+adminRouter.patch(
+  "/coupons/:id",
+  asyncRoute(async (req, res) => {
+    const data = couponData(couponBody.parse(req.body));
+    res.json(await prisma.coupon.update({ where: { id: req.params.id }, data }));
+  }),
+);
+
+adminRouter.delete(
+  "/coupons/:id",
+  asyncRoute(async (req, res) => {
+    res.json(await deleteUnusedCoupon(req.params.id));
+  }),
+);
+
+adminRouter.get(
+  "/coupons/:id/redemptions",
+  asyncRoute(async (req, res) => {
+    const query = z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      pageSize: z.coerce.number().int().min(1).max(50).default(20),
+    }).parse(req.query);
+    res.json(await couponRedemptions(req.params.id, query.page, query.pageSize));
+  }),
+);
+
+adminRouter.get(
+  "/analytics",
+  asyncRoute(async (req, res) => {
+    const query = analyticsQuery.parse(req.query);
+    res.json(await getAnalytics(query));
+  }),
+);
+
+const orderListQuery = z.object({
+  q: z.string().trim().max(80).optional(),
+  status: z.enum(["PENDING", "ACCEPTED", "REJECTED", "PREPARING", "OUT_FOR_DELIVERY", "READY_FOR_PICKUP", "COMPLETED", "CANCELLED"]).optional(),
+  fulfillment: z.enum(["DELIVERY", "PICKUP"]).optional(),
+  from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  sort: z.enum(["newest", "oldest"]).default("newest"),
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(50).default(20),
+});
+
 adminRouter.get(
   "/orders",
-  asyncRoute(async (_req, res) => {
-    const orders = await prisma.order.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 200,
-      include: {
-        items: true,
-        payment: true,
-        deliveryArea: true,
-        statusEvents: { orderBy: { createdAt: "asc" } },
-      },
-    });
-    res.json(orders.map((order) => presentOrder(order)));
+  asyncRoute(async (req, res) => {
+    res.json(await listAdminOrders(orderListQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.get(
+  "/orders/:id",
+  asyncRoute(async (req, res) => {
+    res.json(await getAdminOrder(req.params.id));
+  }),
+);
+
+adminRouter.get(
+  "/deliveries",
+  asyncRoute(async (req, res) => {
+    const query = orderListQuery.omit({ fulfillment: true, status: true }).extend({
+      queue: z.enum(["all", "pending", "active", "completed", "rejected", "cancelled"]).default("all"),
+    }).parse(req.query);
+    res.json(await listDeliveries({ ...query, queue: query.queue as DeliveryQueue }));
   }),
 );
 
@@ -126,6 +263,14 @@ adminRouter.patch(
   asyncRoute(async (req, res) => {
     const body = statusSchema.parse(req.body);
     res.json(await updateOrderStatus(req.params.id, body.status));
+  }),
+);
+
+adminRouter.post(
+  "/orders/:id/payment",
+  asyncRoute(async (req, res) => {
+    z.object({ collected: z.literal(true) }).parse(req.body);
+    res.json(await collectCashPayment(req.params.id));
   }),
 );
 
@@ -144,18 +289,77 @@ adminRouter.post(
   }),
 );
 
+const pageQuery = z.object({
+  q: z.string().trim().max(80).optional(),
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(50).default(20),
+});
+
 adminRouter.get(
   "/products",
-  asyncRoute(async (_req, res) => {
-    res.json(
-      await prisma.product.findMany({
-        orderBy: [{ category: { sortOrder: "asc" } }, { sortOrder: "asc" }],
-        include: {
-          category: true,
-          variants: { orderBy: { sortOrder: "asc" }, include: { extraPrices: { include: { extra: true } } } },
-        },
-      }),
-    );
+  asyncRoute(async (req, res) => {
+    const query = pageQuery.extend({
+      categoryId: z.string().min(1).optional(),
+      available: z.enum(["true", "false"]).optional(),
+      isOffer: z.enum(["true", "false"]).optional(),
+    }).parse(req.query);
+    res.json(await listProducts({
+      ...query,
+      available: query.available == null ? undefined : query.available === "true",
+      isOffer: query.isOffer == null ? undefined : query.isOffer === "true",
+    }));
+  }),
+);
+
+adminRouter.get(
+  "/categories",
+  asyncRoute(async (req, res) => {
+    res.json(await listCategories(pageQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.delete(
+  "/categories/:id",
+  asyncRoute(async (req, res) => {
+    res.json(await deleteCategory(req.params.id));
+  }),
+);
+
+adminRouter.get(
+  "/variants",
+  asyncRoute(async (req, res) => {
+    res.json(await listVariants(pageQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.patch(
+  "/variants/:id",
+  asyncRoute(async (req, res) => {
+    const body = z.object({
+      label: z.string().trim().min(1).optional(),
+      detail: z.string().optional(),
+      priceCents: z.number().int().nonnegative().optional(),
+    }).parse(req.body);
+    res.json(await updateVariant(req.params.id, body));
+  }),
+);
+
+adminRouter.get(
+  "/customers",
+  asyncRoute(async (req, res) => {
+    const query = pageQuery.extend({ sort: z.enum(["latest", "oldest", "spending", "orders", "name"]).default("latest") }).parse(req.query);
+    res.json(await listCustomers(query));
+  }),
+);
+
+adminRouter.get(
+  "/customers/:key/orders",
+  asyncRoute(async (req, res) => {
+    const query = z.object({
+      page: z.coerce.number().int().min(1).default(1),
+      pageSize: z.coerce.number().int().min(1).max(50).default(20),
+    }).parse(req.query);
+    res.json(await customerOrders(req.params.key, query.page, query.pageSize));
   }),
 );
 
@@ -169,6 +373,7 @@ adminRouter.post(
         sku: body.sku,
         name: body.name,
         description: body.description,
+        image: cleanImageUrl(body.image),
         allergenCodes: body.allergenCodes,
         available: body.available,
         isOffer: body.isOffer,
@@ -202,6 +407,7 @@ adminRouter.patch(
         sku: body.sku,
         name: body.name,
         description: body.description,
+        ...(body.image === undefined ? {} : { image: cleanImageUrl(body.image) }),
         allergenCodes: body.allergenCodes,
         available: body.available,
         isOffer: body.isOffer,
@@ -265,8 +471,16 @@ adminRouter.patch(
 
 adminRouter.get(
   "/extras",
-  asyncRoute(async (_req, res) => {
-    res.json(await prisma.extra.findMany({ orderBy: { name: "asc" } }));
+  asyncRoute(async (req, res) => {
+    res.json(await listExtras(pageQuery.parse(req.query)));
+  }),
+);
+
+adminRouter.patch(
+  "/extras/:id",
+  asyncRoute(async (req, res) => {
+    const body = z.object({ name: z.string().trim().min(1).max(120) }).parse(req.body);
+    res.json(await renameExtra(req.params.id, body.name));
   }),
 );
 
@@ -320,7 +534,12 @@ adminRouter.patch(
 adminRouter.patch(
   "/restaurant",
   asyncRoute(async (req, res) => {
-    const body = z.object({ holidayMode: z.boolean(), pickupMinimumCents: z.number().int().nonnegative() }).parse(req.body);
+    const body = z.object({
+      holidayMode: z.boolean(),
+      pickupMinimumCents: z.number().int().nonnegative(),
+      preparationMinutes: z.number().int().min(0).max(240).nullable().optional(),
+      deliveryMinutesPerKm: z.number().int().min(0).max(120).nullable().optional(),
+    }).parse(req.body);
     const restaurant = await prisma.restaurant.findFirst();
     if (!restaurant) throw new HttpError(503, "Restaurantdaten fehlen.", "NOT_READY");
     res.json(await prisma.restaurant.update({ where: { id: restaurant.id }, data: body }));

@@ -7,6 +7,8 @@ import { schedulePublish } from "../../realtime/publish.js";
 import { HttpError } from "../../utils/http.js";
 import { hashToken, newToken } from "../../utils/password.js";
 import { assertOrderAllowed } from "../delivery/delivery.service.js";
+import { promisedAtFor } from "./promise.js";
+import { quoteCoupon, reserveCoupon } from "../admin/coupons.service.js";
 import { assertPaymentReady } from "../payments/payments.service.js";
 import { cartItemSchema, orderSchema, quoteSchema } from "./orders.schema.js";
 
@@ -93,11 +95,16 @@ export async function quoteOrder(input: z.infer<typeof quoteSchema>) {
     longitude: input.longitude,
   });
   const deliveryFeeCents = allowance.decision.ok ? allowance.decision.deliveryFeeCents : 0;
+  const coupon = await quoteCoupon(input.couponCode, priced.subtotalCents);
+  const totalCents = priced.subtotalCents - coupon.discountCents + deliveryFeeCents;
   return {
     subtotalCents: priced.subtotalCents,
+    discountCents: coupon.discountCents,
+    couponCode: coupon.couponCode,
+    couponSummary: coupon.couponSummary,
     deliveryFeeCents,
     distanceKm: allowance.distanceKm,
-    totalCents: orderTotalCents([priced.subtotalCents], deliveryFeeCents),
+    totalCents,
     minimumOrderCents: allowance.decision.minimumOrderCents,
     lines: priced.lines.map((line) => ({
       name: line.variant.product.name,
@@ -127,12 +134,20 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
   });
   if (!allowance.decision.ok) throw new HttpError(400, "Die Bestellung kann so nicht geliefert werden.", "DELIVERY");
 
-  const restaurant = input.fulfillment === "PICKUP" ? await prisma.restaurant.findFirst() : null;
+  const restaurant = await prisma.restaurant.findFirst();
   if (input.fulfillment === "PICKUP" && !restaurant) {
     throw new HttpError(503, "Restaurantdaten sind noch nicht geladen.", "NOT_READY");
   }
+  const promisedAt = restaurant
+    ? promisedAtFor({
+        createdAt: new Date(),
+        fulfillment: input.fulfillment,
+        distanceKm: allowance.distanceKm,
+        preparationMinutes: restaurant.preparationMinutes,
+        deliveryMinutesPerKm: restaurant.deliveryMinutesPerKm,
+      })
+    : null;
   const trackingToken = newToken();
-  const totalCents = orderTotalCents([priced.subtotalCents], allowance.decision.deliveryFeeCents);
 
   try {
     const order = await prisma.$transaction(async (tx) => {
@@ -143,6 +158,18 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
         });
         if (existing) return existing;
       }
+      const coupon = input.couponCode?.trim()
+        ? await reserveCoupon(tx, {
+            code: input.couponCode,
+            subtotalCents: priced.subtotalCents,
+            userId,
+            phone: input.customer.phone,
+            email: input.customer.email,
+          })
+        : null;
+      const discountCents = coupon?.discountCents ?? 0;
+      const totalCents = priced.subtotalCents - discountCents + allowance.decision.deliveryFeeCents;
+      if (totalCents < 0) throw new HttpError(400, "Der Gutschein macht die Bestellung ungültig.", "COUPON");
 
       const created = await tx.order.create({
         data: {
@@ -163,9 +190,13 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
           deliveryAreaId: allowance.areaId,
           notes: input.notes,
           subtotalCents: priced.subtotalCents,
+          discountCents,
+          couponCode: coupon?.couponCode ?? null,
+          couponSummary: coupon?.couponSummary ?? null,
           deliveryFeeCents: allowance.decision.deliveryFeeCents,
           totalCents,
           minimumOrderCents: allowance.decision.minimumOrderCents,
+          promisedAt,
           items: {
             create: priced.lines.map((line) => ({
               sku: line.variant.product.sku,
@@ -195,6 +226,19 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
               status: "UNPAID",
             },
           },
+          ...(coupon
+            ? {
+                couponRedemption: {
+                  create: {
+                    couponId: coupon.couponId,
+                    codeSnapshot: coupon.couponCode,
+                    summary: coupon.couponSummary,
+                    discountCents: coupon.discountCents,
+                    customerKey: coupon.customerKey,
+                  },
+                },
+              }
+            : {}),
           statusEvents: { create: { status: "PENDING" } },
         },
         include: orderInclude,
@@ -242,6 +286,26 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
     }
     throw error;
   }
+}
+
+export async function collectCashPayment(orderId: string) {
+  const order = await prisma.order.findUnique({ where: { id: orderId }, include: { payment: true } });
+  if (!order || !order.payment) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
+  if (order.payment.method !== "CASH") throw new HttpError(409, "Nur Barzahlung kann hier als kassiert markiert werden.", "CASH_ONLY");
+  if (order.status === "REJECTED" || order.status === "CANCELLED") {
+    throw new HttpError(409, "Abgelehnte oder stornierte Bestellungen werden nicht kassiert.", "ORDER_CLOSED");
+  }
+  if (order.payment.status === "PAID") {
+    const current = await prisma.order.findUnique({ where: { id: orderId }, include: orderInclude });
+    if (!current) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
+    return presentOrder(current);
+  }
+  const updated = await prisma.order.update({
+    where: { id: order.id },
+    data: { payment: { update: { status: "PAID", paidAt: new Date() } } },
+    include: orderInclude,
+  });
+  return presentOrder(updated);
 }
 
 export async function updateOrderStatus(orderId: string, status: OrderStatus) {

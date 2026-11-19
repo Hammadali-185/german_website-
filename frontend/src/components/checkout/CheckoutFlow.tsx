@@ -12,7 +12,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 type Method = { method: "CASH" | "PAYPAL" | "CARD" | "SOFORT"; label: string; available: boolean; reason: string | null };
 type Area = { id: string; postalCode: string; locality: string; minimumOrderCents: number; deliveryFeeCents: number | null };
-type Quote = { subtotalCents: number; deliveryFeeCents: number; totalCents: number; minimumOrderCents: number; distanceKm?: number | null };
+type Quote = { subtotalCents: number; discountCents?: number; couponCode?: string | null; couponSummary?: string | null; deliveryFeeCents: number; totalCents: number; minimumOrderCents: number; distanceKm?: number | null };
 
 const steps = ["Lieferung", "Kontakt", "Adresse", "Hinweise", "Zahlung", "Prüfen"];
 
@@ -29,6 +29,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
   const [areas, setAreas] = useState<Area[]>([]);
   const [notes, setNotes] = useState("");
   const [paymentMethod, setPaymentMethod] = useState<Method["method"]>("CASH");
+  const [couponCode, setCouponCode] = useState("");
   const [methods, setMethods] = useState<Method[]>([]);
   const [quote, setQuote] = useState<Quote | null>(null);
   const [error, setError] = useState("");
@@ -111,6 +112,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
           deliveryAreaId: fulfillment === "DELIVERY" ? areaId : undefined,
           latitude: place?.latitude,
           longitude: place?.longitude,
+          couponCode: couponCode.trim() || undefined,
           items: lines.map((line) => ({
             productId: line.productId,
             variantId: line.variantId,
@@ -141,6 +143,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
           customer,
           address: fulfillment === "DELIVERY" ? { ...address, latitude: place?.latitude, longitude: place?.longitude } : { street: "", postalCode: "", city: "" },
           notes,
+          couponCode: couponCode.trim() || undefined,
           paymentMethod,
           items: lines.map((line) => ({
             productId: line.productId,
@@ -287,6 +290,11 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
         {step === 5 && quote ? (
           <div className="mt-6 bg-white p-5">
             <p className="flex justify-between text-sm"><span>Zwischensumme</span><span>{formatEuro(quote.subtotalCents)}</span></p>
+            <label className="mt-3 block text-sm">Gutscheincode
+              <input value={couponCode} onChange={(event) => setCouponCode(event.target.value)} className="mt-1 w-full border border-ink/15 px-3 py-2" placeholder="Optional" />
+            </label>
+            <button type="button" className="mt-2 text-sm underline" onClick={() => void review()}>Code prüfen</button>
+            {quote.discountCents ? <p className="mt-2 flex justify-between text-sm"><span>Gutschein {quote.couponCode}</span><span>−{formatEuro(quote.discountCents)}</span></p> : null}
             <p className="mt-2 flex justify-between text-sm"><span>Liefergebühr</span><span>{formatEuro(quote.deliveryFeeCents)}</span></p>
             <p className="mt-4 flex flex-wrap items-end justify-between gap-2 font-display text-3xl"><span>Gesamt</span><span>{formatEuro(quote.totalCents)}</span></p>
             <p className="mt-3 text-xs text-mute">Der Betrag wurde vom Server aus der aktuellen Karte berechnet.</p>

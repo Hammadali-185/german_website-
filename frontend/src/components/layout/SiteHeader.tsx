@@ -51,6 +51,8 @@ export function SiteHeader({ restaurant }: { restaurant: Restaurant }) {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <>
       <div className="sticky top-0 z-40">

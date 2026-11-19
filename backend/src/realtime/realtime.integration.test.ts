@@ -5,11 +5,13 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { io, type Socket } from "socket.io-client";
 import { prisma } from "../database/prisma.js";
 import { createApp } from "../app.js";
+import { berlinClock } from "@pizzablitz/shared";
 import { orderSchema } from "../modules/orders/orders.schema.js";
 import { createOrder, getOrderByTrackingToken, updateOrderStatus } from "../modules/orders/orders.service.js";
 import { issueTicket } from "./access.js";
 import { publishPending } from "./publish.js";
 import { attachRealtime } from "./server.js";
+import { restoreOpeningFixture } from "../modules/orders/test-hours.js";
 
 const keys: string[] = [];
 const startedAt = new Date();
@@ -55,13 +57,14 @@ describe("realtime orders", () => {
     const found = await prisma.restaurant.findFirst({ include: { hours: true } });
     if (!found) throw new Error("Restaurant fehlt.");
     restaurant = found;
-    const wednesday = found.hours.find((hour) => hour.day === "WEDNESDAY");
-    if (wednesday) {
-      previousHour = wednesday;
-      await prisma.openingHours.update({ where: { id: wednesday.id }, data: { opens: "00:00", closes: "23:59" } });
+    const today = berlinClock(new Date()).day;
+    const currentHour = found.hours.find((hour) => hour.day === today);
+    if (currentHour) {
+      previousHour = currentHour;
+      await prisma.openingHours.update({ where: { id: currentHour.id }, data: { opens: "00:00", closes: "23:59" } });
     } else {
       const created = await prisma.openingHours.create({
-        data: { restaurantId: found.id, day: "WEDNESDAY", label: "Mittwoch", opens: "00:00", closes: "23:59" },
+        data: { restaurantId: found.id, day: today, label: today, opens: "00:00", closes: "23:59" },
       });
       createdHourId = created.id;
     }
@@ -77,17 +80,16 @@ describe("realtime orders", () => {
   });
 
   afterAll(async () => {
-    await closeServer();
-    if (keys.length) await prisma.order.deleteMany({ where: { idempotencyKey: { in: keys } } });
-    await prisma.realtimeOutbox.deleteMany({ where: { createdAt: { gte: startedAt } } });
-    await prisma.realtimeTicket.deleteMany({ where: { createdAt: { gte: startedAt } } });
-    if (strangerId) await prisma.user.delete({ where: { id: strangerId } }).catch(() => undefined);
-    if (previousHour) {
-      await prisma.openingHours.update({ where: { id: previousHour.id }, data: { opens: previousHour.opens, closes: previousHour.closes } });
+    try {
+      await restoreOpeningFixture({ previousHour, createdHourId, restaurant });
+      if (keys.length) await prisma.order.deleteMany({ where: { idempotencyKey: { in: keys } } });
+      await prisma.realtimeOutbox.deleteMany({ where: { createdAt: { gte: startedAt } } });
+      await prisma.realtimeTicket.deleteMany({ where: { createdAt: { gte: startedAt } } });
+      if (strangerId) await prisma.user.delete({ where: { id: strangerId } }).catch(() => undefined);
+    } finally {
+      await Promise.race([closeServer(), new Promise((resolve) => setTimeout(resolve, 2000))]);
+      await prisma.$disconnect();
     }
-    if (createdHourId) await prisma.openingHours.delete({ where: { id: createdHourId } });
-    if (restaurant) await prisma.restaurant.update({ where: { id: restaurant.id }, data: { holidayMode: restaurant.holidayMode } });
-    await prisma.$disconnect();
   });
 
   function pickup(name: string) {
@@ -139,12 +141,14 @@ describe("realtime orders", () => {
     expect(await other.emitWithAck("order:watch", { orderId: first.id })).toEqual({ ok: false });
 
     const status = waitFor<{ orderId: string; status: string; eventId: string }>(guest, "order:status");
+    const adminStatus = waitFor<{ orderId: string; status: string }>(admin, "order:status");
     const otherStatus = waitFor(otherGuest, "order:status", 500).then(
       () => true,
       () => false,
     );
     await updateOrderStatus(first.id, "ACCEPTED");
     expect(await status).toMatchObject({ orderId: first.id, status: "ACCEPTED" });
+    expect(await adminStatus).toMatchObject({ orderId: first.id, status: "ACCEPTED" });
     expect(await otherStatus).toBe(false);
 
     guest.disconnect();

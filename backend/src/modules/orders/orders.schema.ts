@@ -15,6 +15,7 @@ export const quoteSchema = z.object({
   latitude: z.number().gte(-90).lte(90).optional(),
   longitude: z.number().gte(-180).lte(180).optional(),
   items: z.array(cartItemSchema).min(1),
+  couponCode: z.string().trim().max(40).optional(),
 });
 
 const phoneSchema = z

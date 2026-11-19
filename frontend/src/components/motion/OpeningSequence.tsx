@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 
 const STORAGE_KEY = "pb-intro";
@@ -23,9 +24,15 @@ function releasePage() {
 }
 
 export function OpeningSequence() {
+  const pathname = usePathname();
   const [stage, setStage] = useState<"hold" | "open" | "gone">("hold");
 
   useLayoutEffect(() => {
+    if (pathname.startsWith("/admin")) {
+      releasePage();
+      setStage("gone");
+      return;
+    }
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       finishIntro();
       releasePage();
@@ -49,7 +56,7 @@ export function OpeningSequence() {
       window.clearTimeout(openAt);
       window.clearTimeout(goneAt);
     };
-  }, []);
+  }, [pathname]);
 
   if (stage === "gone") return null;
 
