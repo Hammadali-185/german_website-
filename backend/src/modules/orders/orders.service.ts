@@ -289,22 +289,46 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
 }
 
 export async function collectCashPayment(orderId: string) {
-  const order = await prisma.order.findUnique({ where: { id: orderId }, include: { payment: true } });
-  if (!order || !order.payment) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
-  if (order.payment.method !== "CASH") throw new HttpError(409, "Nur Barzahlung kann hier als kassiert markiert werden.", "CASH_ONLY");
-  if (order.status === "REJECTED" || order.status === "CANCELLED") {
-    throw new HttpError(409, "Abgelehnte oder stornierte Bestellungen werden nicht kassiert.", "ORDER_CLOSED");
-  }
-  if (order.payment.status === "PAID") {
-    const current = await prisma.order.findUnique({ where: { id: orderId }, include: orderInclude });
-    if (!current) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
-    return presentOrder(current);
-  }
-  const updated = await prisma.order.update({
-    where: { id: order.id },
-    data: { payment: { update: { status: "PAID", paidAt: new Date() } } },
-    include: orderInclude,
+  const updated = await prisma.$transaction(async (tx) => {
+    const order = await tx.order.findUnique({ where: { id: orderId }, include: { payment: true } });
+    if (!order || !order.payment) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
+    if (order.payment.method !== "CASH") throw new HttpError(409, "Nur Barzahlung kann hier als kassiert markiert werden.", "CASH_ONLY");
+    if (order.status === "REJECTED" || order.status === "CANCELLED") {
+      throw new HttpError(409, "Abgelehnte oder stornierte Bestellungen werden nicht kassiert.", "ORDER_CLOSED");
+    }
+    if (order.payment.status !== "PAID") {
+      const collected = await tx.payment.updateMany({
+        where: {
+          id: order.payment.id,
+          status: { not: "PAID" },
+          order: { status: { notIn: ["REJECTED", "CANCELLED"] } },
+        },
+        data: { status: "PAID", paidAt: new Date() },
+      });
+      if (collected.count === 1) {
+        await tx.realtimeOutbox.create({
+          data: {
+            type: "order.payment",
+            payload: {
+              eventId: randomUUID(),
+              orderId: order.id,
+              status: order.status,
+              fulfillment: order.fulfillment,
+              publicNumber: order.publicNumber,
+              paymentStatus: "PAID",
+            },
+          },
+        });
+      }
+    }
+    const current = await tx.order.findUnique({ where: { id: orderId }, include: orderInclude });
+    if (!current?.payment) throw new HttpError(404, "Bestellung nicht gefunden.", "NOT_FOUND");
+    if (current.status === "REJECTED" || current.status === "CANCELLED" || current.payment.status !== "PAID") {
+      throw new HttpError(409, "Abgelehnte oder stornierte Bestellungen werden nicht kassiert.", "ORDER_CLOSED");
+    }
+    return current;
   });
+  schedulePublish();
   return presentOrder(updated);
 }
 

@@ -10,7 +10,8 @@ import { couponRedemptions, deleteUnusedCoupon, listCoupons, normalizeCouponCode
 import { getAdminOrder, listAdminOrders, listDeliveries, type DeliveryQueue } from "./order-query.js";
 import { getReport, reportCsv } from "./reports.service.js";
 import { systemStatus } from "./system.service.js";
-import { cleanImageUrl, deleteCategory, listCategories, listExtras, listProducts, listVariants, renameExtra, updateVariant } from "./catalog.service.js";
+import { assertVariantBelongsToProduct, cleanImageUrl, deleteCategory, listCategories, listExtras, listProducts, listVariants, renameExtra, updateVariant } from "./catalog.service.js";
+import { rethrowCouponWrite } from "./coupons.service.js";
 import { customerOrders, listCustomers } from "./customers.service.js";
 
 const statusSchema = z.object({
@@ -185,7 +186,11 @@ adminRouter.post(
   "/coupons",
   asyncRoute(async (req, res) => {
     const data = couponData(couponBody.parse(req.body));
-    res.status(201).json(await prisma.coupon.create({ data }));
+    try {
+      res.status(201).json(await prisma.coupon.create({ data }));
+    } catch (error) {
+      rethrowCouponWrite(error);
+    }
   }),
 );
 
@@ -193,7 +198,11 @@ adminRouter.patch(
   "/coupons/:id",
   asyncRoute(async (req, res) => {
     const data = couponData(couponBody.parse(req.body));
-    res.json(await prisma.coupon.update({ where: { id: req.params.id }, data }));
+    try {
+      res.json(await prisma.coupon.update({ where: { id: req.params.id }, data }));
+    } catch (error) {
+      rethrowCouponWrite(error);
+    }
   }),
 );
 
@@ -415,6 +424,7 @@ adminRouter.patch(
     });
     for (const [index, variant] of body.variants.entries()) {
       if (variant.id) {
+        assertVariantBelongsToProduct(existing.variants.map((entry) => entry.id), variant.id);
         await prisma.productVariant.update({
           where: { id: variant.id },
           data: {
@@ -523,10 +533,12 @@ adminRouter.patch(
   }),
 );
 
+export const openingTimeSchema = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Uhrzeit muss HH:MM sein.");
+
 adminRouter.patch(
   "/hours/:id",
   asyncRoute(async (req, res) => {
-    const body = z.object({ opens: z.string().regex(/^\d{2}:\d{2}$/), closes: z.string().regex(/^\d{2}:\d{2}$/) }).parse(req.body);
+    const body = z.object({ opens: openingTimeSchema, closes: openingTimeSchema }).parse(req.body);
     res.json(await prisma.openingHours.update({ where: { id: req.params.id }, data: body }));
   }),
 );

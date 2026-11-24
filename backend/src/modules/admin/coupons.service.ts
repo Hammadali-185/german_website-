@@ -1,8 +1,15 @@
-import type { Coupon, Prisma } from "@prisma/client";
+import { Prisma, type Coupon } from "@prisma/client";
 import { prisma } from "../../database/prisma.js";
 import { HttpError } from "../../utils/http.js";
 
 const activeOrder = { status: { notIn: ["REJECTED", "CANCELLED"] as ("REJECTED" | "CANCELLED")[] } };
+
+export function rethrowCouponWrite(error: unknown): never {
+  if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
+    throw new HttpError(409, "Dieser Gutscheincode ist bereits vorhanden.", "COUPON_CODE");
+  }
+  throw error;
+}
 
 export function normalizeCouponCode(code: string) {
   return code.trim().toUpperCase().replace(/\s+/g, "");

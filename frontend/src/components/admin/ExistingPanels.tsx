@@ -1,6 +1,7 @@
 "use client";
 
 import { api } from "@/lib/api";
+import { useState } from "react";
 
 type Area = { id: string; postalCode: string; locality: string; minimumOrderCents: number; deliveryFeeCents: number | null; active: boolean };
 type Hour = { id: string; label: string; opens: string; closes: string };
@@ -31,10 +32,26 @@ export function SettingsPanel({
   onPickup: (value: number) => void;
   onPreparation: (value: number | null) => void;
   onTravel: (value: number | null) => void;
-  onSaveRestaurant: () => void;
+  onSaveRestaurant: () => void | Promise<void>;
 }) {
+  const [notice, setNotice] = useState("");
+  const [failed, setFailed] = useState(false);
+  const clock = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+  async function save(action: () => Promise<void>) {
+    try {
+      await action();
+      setFailed(false);
+      setNotice("Gespeichert.");
+    } catch (caught) {
+      setFailed(true);
+      setNotice(caught instanceof Error ? caught.message : "Speichern fehlgeschlagen.");
+    }
+  }
+
   return (
     <div className="mt-6 grid gap-4 lg:grid-cols-2">
+      {notice ? <p className={`lg:col-span-2 rounded-xl bg-white p-4 text-sm ${failed ? "text-[#C8102E]" : "text-emerald-800"}`}>{notice}</p> : null}
       <section className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
         <h2 className="font-display text-3xl">Zeiten</h2>
         <label className="mt-3 flex items-center gap-2 text-sm">
@@ -43,18 +60,18 @@ export function SettingsPanel({
         </label>
         <label className="mt-3 block text-sm">
           Mindestbestellwert Abholung in Cent
-          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={pickupMinimum} onChange={(event) => onPickup(Number(event.target.value))} />
+          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={pickupMinimum} onChange={(event) => { if (/^\d+$/.test(event.target.value)) onPickup(Number(event.target.value)); }} />
         </label>
         <label className="mt-3 block text-sm">
           Zubereitung in Minuten
-          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={preparationMinutes ?? ""} onChange={(event) => onPreparation(event.target.value === "" ? null : Number(event.target.value))} />
+          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={preparationMinutes ?? ""} onChange={(event) => { if (event.target.value === "") onPreparation(null); else if (/^\d{1,3}$/.test(event.target.value)) onPreparation(Number(event.target.value)); }} />
         </label>
         <label className="mt-3 block text-sm">
           Zusätzliche Minuten je Kilometer
-          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={deliveryMinutesPerKm ?? ""} onChange={(event) => onTravel(event.target.value === "" ? null : Number(event.target.value))} />
+          <input className="mt-1 w-full rounded-lg border border-neutral-200 px-3 py-2" value={deliveryMinutesPerKm ?? ""} onChange={(event) => { if (event.target.value === "") onTravel(null); else if (/^\d{1,3}$/.test(event.target.value)) onTravel(Number(event.target.value)); }} />
         </label>
         <p className="mt-2 text-xs text-neutral-500">Leer lassen, wenn noch keine Lieferzusage gespeichert werden soll. Bestehende Bestellungen behalten ihre alte Zusage.</p>
-        <button type="button" className="mt-3 rounded-lg bg-[#1C1F22] px-3 py-2 text-sm text-white" onClick={onSaveRestaurant}>Speichern</button>
+        <button type="button" className="mt-3 rounded-lg bg-[#1C1F22] px-3 py-2 text-sm text-white" onClick={() => void save(() => Promise.resolve(onSaveRestaurant()))}>Speichern</button>
         <div className="mt-4 grid gap-2">
           {hours.map((hour) => (
             <form
@@ -63,7 +80,14 @@ export function SettingsPanel({
               onSubmit={(event) => {
                 event.preventDefault();
                 const data = new FormData(event.currentTarget);
-                void api(`/api/admin/hours/${hour.id}`, { method: "PATCH", body: JSON.stringify({ opens: data.get("opens"), closes: data.get("closes") }) });
+                const opens = String(data.get("opens") ?? "");
+                const closes = String(data.get("closes") ?? "");
+                if (!clock.test(opens) || !clock.test(closes)) {
+                  setFailed(true);
+                  setNotice("Die Uhrzeit muss im Format HH:MM liegen.");
+                  return;
+                }
+                void save(() => api(`/api/admin/hours/${hour.id}`, { method: "PATCH", body: JSON.stringify({ opens, closes }) }));
               }}
             >
               <span className="col-span-2 sm:col-span-1">{hour.label}</span>
@@ -84,14 +108,27 @@ export function SettingsPanel({
               onSubmit={(event) => {
                 event.preventDefault();
                 const data = new FormData(event.currentTarget);
-                void api(`/api/admin/areas/${area.id}`, {
+                const minimum = Number(data.get("minimum"));
+                const feeText = String(data.get("fee") ?? "").trim();
+                if (!Number.isFinite(minimum) || minimum < 0) {
+                  setFailed(true);
+                  setNotice("Der Mindestbestellwert ist keine gültige Zahl.");
+                  return;
+                }
+                let deliveryFeeCents: number | null = null;
+                if (feeText !== "") {
+                  const fee = Number(feeText);
+                  if (!Number.isFinite(fee) || fee < 0) {
+                    setFailed(true);
+                    setNotice("Die Liefergebühr ist keine gültige Zahl.");
+                    return;
+                  }
+                  deliveryFeeCents = Math.round(fee * 100);
+                }
+                void save(() => api(`/api/admin/areas/${area.id}`, {
                   method: "PATCH",
-                  body: JSON.stringify({
-                    minimumOrderCents: Math.round(Number(data.get("minimum")) * 100),
-                    deliveryFeeCents: data.get("fee") === "" ? null : Math.round(Number(data.get("fee")) * 100),
-                    active: true,
-                  }),
-                });
+                  body: JSON.stringify({ minimumOrderCents: Math.round(minimum * 100), deliveryFeeCents, active: area.active }),
+                }));
               }}
             >
               <span className="col-span-2 sm:col-span-1">{area.postalCode} {area.locality}</span>
@@ -110,16 +147,22 @@ export function SettingsPanel({
             onSubmit={(event) => {
               event.preventDefault();
               const data = new FormData(event.currentTarget);
-              void api(`/api/admin/promotions/${promotion.slug ?? "phone-gift"}`, {
+              const minimum = Number(data.get("minimum"));
+              if (!Number.isFinite(minimum) || minimum < 0) {
+                setFailed(true);
+                setNotice("Der Mindestbestellwert ist keine gültige Zahl.");
+                return;
+              }
+              void save(() => api(`/api/admin/promotions/${promotion.slug ?? "phone-gift"}`, {
                 method: "PATCH",
                 body: JSON.stringify({
                   title: data.get("title"),
                   body: data.get("body"),
                   active: data.get("active") === "on",
                   phoneOnly: true,
-                  minimumOrderCents: Math.round(Number(data.get("minimum")) * 100),
+                  minimumOrderCents: Math.round(minimum * 100),
                 }),
-              });
+              }));
             }}
           >
             <input name="title" defaultValue={promotion.title} className="rounded-lg border border-neutral-200 px-3 py-2" />

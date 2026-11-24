@@ -59,7 +59,17 @@ export function SiteHeader({ restaurant }: { restaurant: Restaurant }) {
       {restaurant.announcement?.active ? (
         <div className="bg-forest px-4 py-3 text-center text-sm font-medium leading-6 text-white">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Telefon</p>
-          <p className="mt-1">{restaurant.announcement.body}</p>
+          <p className="mt-1">
+            {restaurant.announcement.body}
+            {restaurant.announcement.body.replace(/\D/g, "").includes((restaurant.phone || "0725326560").replace(/\D/g, "")) ? null : (
+              <>
+                {" "}
+                <a href={`tel:${restaurant.phoneInternational || "0725326560"}`} className="whitespace-nowrap font-semibold text-gold">
+                  {restaurant.phone || "07253 26560"}
+                </a>
+              </>
+            )}
+          </p>
         </div>
       ) : null}
       <header className="border-b border-ink/10 bg-cream/95 backdrop-blur">

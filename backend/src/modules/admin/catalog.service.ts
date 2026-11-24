@@ -78,6 +78,12 @@ export async function listVariants(query: PageQuery) {
   return { items, total, page: query.page, pageSize: query.pageSize };
 }
 
+export function assertVariantBelongsToProduct(variantIds: string[], variantId: string) {
+  if (!variantIds.includes(variantId)) {
+    throw new HttpError(400, "Eine Variante gehört nicht zu diesem Produkt.", "VARIANT");
+  }
+}
+
 export async function updateVariant(id: string, input: { label?: string; detail?: string; priceCents?: number }) {
   const existing = await prisma.productVariant.findUnique({ where: { id } });
   if (!existing) throw new HttpError(404, "Variante nicht gefunden.", "NOT_FOUND");

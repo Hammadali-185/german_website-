@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 
 const STORAGE_KEY = "pb-intro";
-const HOLD_MS = 500;
-const OPEN_MS = 480;
+const HOLD_MS = 220;
+const OPEN_MS = 280;
 
 function finishIntro() {
   sessionStorage.setItem(STORAGE_KEY, "1");
@@ -33,7 +33,7 @@ export function OpeningSequence() {
       setStage("gone");
       return;
     }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || sessionStorage.getItem(STORAGE_KEY) === "1") {
       finishIntro();
       releasePage();
       setStage("gone");

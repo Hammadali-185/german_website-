@@ -2,7 +2,7 @@ import "../../config/load-env.js";
 import { afterAll, describe, expect, it } from "vitest";
 import { prisma } from "../../database/prisma.js";
 import { HttpError } from "../../utils/http.js";
-import { cleanImageUrl, deleteCategory, listExtras, listProducts } from "./catalog.service.js";
+import { assertVariantBelongsToProduct, cleanImageUrl, deleteCategory, listExtras, listProducts } from "./catalog.service.js";
 import { customerOrders, listCustomers } from "./customers.service.js";
 
 describe("catalog and customers", () => {
@@ -14,6 +14,8 @@ describe("catalog and customers", () => {
     expect(cleanImageUrl("  ")).toBeNull();
     expect(cleanImageUrl("https://example.com/pizza.png")).toBe("https://example.com/pizza.png");
     expect(() => cleanImageUrl("javascript:alert(1)")).toThrow(HttpError);
+    expect(() => assertVariantBelongsToProduct(["owned"], "other-product")).toThrow(HttpError);
+    expect(() => assertVariantBelongsToProduct(["owned"], "owned")).not.toThrow();
   });
 
   it("keeps product identity, blocks a used category, and pages extras in the database", async () => {

@@ -6,7 +6,6 @@ import { formatEuro } from "@/lib/format";
 import { useCart } from "@/store/cart";
 import type { Category, Product } from "@/types/catalog";
 import { Search } from "lucide-react";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 
 export function MenuExperience({
@@ -30,6 +29,10 @@ export function MenuExperience({
       return categoryMatch && (!needle || text.includes(needle));
     });
   }, [active, products, query]);
+
+  function chooseCategory(slug: string) {
+    setActive(slug);
+  }
 
   function quickAdd(product: Product) {
     const variant = product.variants[0];
@@ -55,18 +58,19 @@ export function MenuExperience({
     <div className="mx-auto grid min-w-0 max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)_320px]">
       <aside className="min-w-0 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
         <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:snap-none lg:gap-1 lg:overflow-visible lg:px-0">
-          <Link href="/menu" onClick={() => setActive("")} className={`inline-flex min-h-11 shrink-0 snap-start items-center rounded-full px-4 text-sm ${active === "" ? "bg-forest text-cream" : "bg-white shadow-sm"}`}>
+          <button type="button" aria-pressed={active === ""} onClick={() => chooseCategory("")} className={`inline-flex min-h-11 shrink-0 snap-start items-center rounded-full px-4 text-sm ${active === "" ? "bg-forest text-cream" : "bg-white shadow-sm"}`}>
             Alle
-          </Link>
+          </button>
           {categories.map((category) => (
-            <Link
+            <button
+              type="button"
               key={category.slug}
-              href={`/menu/${category.slug}`}
-              onClick={() => setActive(category.slug)}
+              aria-pressed={active === category.slug}
+              onClick={() => chooseCategory(category.slug)}
               className={`inline-flex min-h-11 shrink-0 snap-start items-center rounded-full px-4 text-sm ${active === category.slug ? "bg-forest text-cream" : "bg-white shadow-sm"}`}
             >
               {category.name}
-            </Link>
+            </button>
           ))}
         </div>
       </aside>
@@ -78,7 +82,7 @@ export function MenuExperience({
         {filtered.length === 0 ? <p className="bg-white p-8 text-mute">Keine Gerichte für diese Auswahl.</p> : null}
         <div className="grid min-w-0 gap-4 sm:grid-cols-2">
           {filtered.map((product) => (
-            <article key={product.id} className="rise-in group flex min-w-0 flex-col overflow-hidden rounded-2xl bg-white shadow-card transition duration-300 active:scale-[0.99] hover:-translate-y-1 sm:rounded-3xl">
+            <article key={product.id} className="group flex min-w-0 flex-col overflow-hidden rounded-2xl bg-white shadow-card transition duration-200 active:scale-[0.99] hover:-translate-y-1 sm:rounded-3xl">
               <button type="button" onClick={() => setSelected(product)} className="flex w-full min-w-0 text-left sm:block">
                 {product.image ? (
                   <img src={product.image} alt="" className="h-24 w-28 shrink-0 object-cover transition duration-700 group-hover:scale-105 sm:h-40 sm:w-full" />

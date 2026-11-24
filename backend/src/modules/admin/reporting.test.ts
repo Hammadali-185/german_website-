@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { openingTimeSchema } from "./admin.routes.js";
 import {
   COLLECTED_PAYMENT_STATUS,
   OPEN_ORDER_STATUSES,
@@ -14,6 +15,12 @@ describe("business reporting calendar", () => {
     expect(SALES_EXCLUDED_STATUSES).toEqual(["REJECTED", "CANCELLED"]);
     expect(OPEN_ORDER_STATUSES.some((status) => SALES_EXCLUDED_STATUSES.includes(status as never))).toBe(false);
     expect(COLLECTED_PAYMENT_STATUS).toBe("PAID");
+  });
+
+  it("rejects an opening time that is not a real clock time", () => {
+    expect(openingTimeSchema.safeParse("15:45").success).toBe(true);
+    expect(openingTimeSchema.safeParse("99:99").success).toBe(false);
+    expect(openingTimeSchema.safeParse("24:00").success).toBe(false);
   });
 
   it("converts Berlin midnights across the 2026 daylight-saving transitions", () => {

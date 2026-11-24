@@ -158,6 +158,10 @@ export function AdminDashboard() {
           if (!rememberEvent(seenEvents.current, event.eventId)) return;
           setRefreshKey((value) => value + 1);
         });
+        socket.on("order:payment", (event: { eventId: string }) => {
+          if (!rememberEvent(seenEvents.current, event.eventId)) return;
+          setRefreshKey((value) => value + 1);
+        });
       })
       .catch(() => { if (!stopped) fallback.disconnected(); });
     return () => {
@@ -277,7 +281,7 @@ export function AdminDashboard() {
           {section === "deliveries" ? <OrderDesk mode="deliveries" refreshKey={refreshKey} freshIds={freshIds} /> : null}
           {section === "catalog" ? <CatalogDesk /> : null}
           {section === "customers" ? <CustomerDesk /> : null}
-          {section === "reports" ? <ReportsDesk /> : null}
+          {section === "reports" ? <ReportsDesk refreshKey={refreshKey} /> : null}
           {section === "coupons" ? <CouponDesk /> : null}
           {section === "offers" ? <OffersDesk /> : null}
           {section === "extensions" ? <StatusDesk mode="extensions" /> : null}
@@ -295,7 +299,7 @@ export function AdminDashboard() {
               deliveryMinutesPerKm={deliveryMinutesPerKm}
               onPreparation={setPreparationMinutes}
               onTravel={setDeliveryMinutesPerKm}
-              onSaveRestaurant={() => void api("/api/admin/restaurant", { method: "PATCH", body: JSON.stringify({ holidayMode, pickupMinimumCents: pickupMinimum, preparationMinutes, deliveryMinutesPerKm }) })}
+              onSaveRestaurant={() => api("/api/admin/restaurant", { method: "PATCH", body: JSON.stringify({ holidayMode, pickupMinimumCents: pickupMinimum, preparationMinutes, deliveryMinutesPerKm }) })}
             />
           ) : null}
           {section !== "dashboard" && section !== "orders" && section !== "deliveries" && section !== "catalog" && section !== "customers" && section !== "reports" && section !== "coupons" && section !== "offers" && section !== "extensions" && section !== "connections" && section !== "settings" ? (

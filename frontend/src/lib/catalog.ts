@@ -49,12 +49,14 @@ function fromFileProduct(product: {
     includedExtraCount: number;
     sortOrder: number;
     choiceGroups: { name: string; required: boolean; selectionType: string; options: { label: string; priceCents: number }[] }[];
+    sourceProductId?: string;
     extras: { sourceExtraId: string; name: string; priceCents: number }[];
   }[];
-}, categories: Category[]): Product {
+}, categories: Category[], productIndex: number): Product {
   const category = categories.find((entry) => entry.slug === product.categorySlug);
+  const sourceProductId = product.variants.find((variant) => variant.sourceProductId)?.sourceProductId ?? String(productIndex);
   const variants: Variant[] = product.variants.map((variant, index) => ({
-    id: `file-${product.categorySlug}-${product.sku}-${variant.sourcePriceId ?? index}`,
+    id: `file-${product.categorySlug}-${product.sku}-${sourceProductId}-${variant.sourcePriceId ?? index}`,
     label: variant.label,
     detail: variant.detail,
     priceCents: variant.priceCents,
@@ -77,7 +79,7 @@ function fromFileProduct(product: {
     })),
   }));
   return {
-    id: `file-${product.categorySlug}-${product.sku}`,
+    id: `file-${product.categorySlug}-${product.sku}-${sourceProductId}`,
     sku: product.sku,
     name: product.name,
     description: product.description,
@@ -104,7 +106,7 @@ async function loadFromFiles(): Promise<SiteContent> {
     source: "file",
     restaurant: withOpen({ ...restaurant, holidayMode: false, hours, email: restaurant.email ?? null }),
     categories,
-    products: products.map((product) => fromFileProduct(product, categories)),
+    products: products.map((product, index) => fromFileProduct(product, categories, index)),
   };
 }
 

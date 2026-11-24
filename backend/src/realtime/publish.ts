@@ -65,5 +65,17 @@ function deliver(type: string, payload: unknown) {
     io.to(`order:${body.orderId}`).emit("order:status", event);
     if (body.userId) io.to(`user:${body.userId}`).emit("order:status", event);
     io.to("admin").emit("order:status", event);
+    return;
+  }
+  if (type === "order.payment") {
+    const body = payload as StatusPayload & { paymentStatus: string };
+    io.to("admin").emit("order:payment", {
+      eventId: body.eventId,
+      orderId: body.orderId,
+      status: body.status,
+      fulfillment: body.fulfillment,
+      publicNumber: body.publicNumber,
+      paymentStatus: body.paymentStatus,
+    });
   }
 }

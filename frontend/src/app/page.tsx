@@ -21,34 +21,32 @@ export default async function HomePage() {
       </div>
       <div className="relative">
       <HomeHero open={site.restaurant.open} />
-      {site.restaurant.announcement?.active ? (
-        <section className="mx-auto mt-6 max-w-7xl px-4 sm:px-6">
-          <div className="rounded-2xl bg-forest px-4 py-4 text-white shadow-card sm:px-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Telefon</p>
-            <p className="mt-2 text-sm font-medium leading-6 sm:text-base">{site.restaurant.announcement.body}</p>
-          </div>
-        </section>
-      ) : null}
 
       <Reveal className="mx-auto mt-12 min-w-0 max-w-7xl px-4 sm:px-6">
         <div className="mb-4 flex items-end justify-between gap-3">
           <h2 className="font-display text-4xl">Kategorien</h2>
           <Link href="/menu" className="shrink-0 py-2 text-sm text-brand">Alle ansehen</Link>
         </div>
-        <div className="-mx-4 flex min-w-0 snap-x gap-3 overflow-x-auto px-4 pb-4">
-          {site.categories.map((category) => (
-            <Link key={category.slug} href={`/menu/${category.slug}`} className="rise-in group relative h-40 w-36 shrink-0 snap-start overflow-hidden rounded-2xl bg-forest shadow-card sm:h-56 sm:w-48 sm:rounded-3xl">
-              {category.image ? (
-                <img
-                  src={category.image}
-                  alt=""
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                />
-              ) : null}
-              <span className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
-              <span className="absolute inset-x-0 bottom-0 p-3 font-display text-base leading-tight text-cream [overflow-wrap:normal] sm:p-4 sm:text-xl">{category.name}</span>
-            </Link>
-          ))}
+        <div className="category-rail -mx-4 overflow-hidden pb-4">
+          <div className="category-rail-track flex w-max gap-3">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex gap-3" aria-hidden={copy === 1 ? true : undefined}>
+                {site.categories.map((category) => (
+                  <Link key={`${category.slug}-${copy}`} href={`/menu/${category.slug}`} tabIndex={copy === 1 ? -1 : undefined} className="group relative h-40 w-36 shrink-0 overflow-hidden rounded-2xl bg-forest shadow-card sm:h-56 sm:w-48 sm:rounded-3xl">
+                    {category.image ? (
+                      <img
+                        src={category.image}
+                        alt=""
+                        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                      />
+                    ) : null}
+                    <span className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
+                    <span className="absolute inset-x-0 bottom-0 p-3 font-display text-base leading-tight text-cream [overflow-wrap:normal] sm:p-4 sm:text-xl">{category.name}</span>
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </Reveal>
 

@@ -19,7 +19,7 @@ type Report = {
   deliveryPerformance: { completed: number; rejected: number; cancelled: number; feeCents: number; averageDistanceKm: number; measured: number; onTime: number; late: number; unmeasured: number; onTimeRatio: number | null; note: string };
 };
 
-export function ReportsDesk() {
+export function ReportsDesk({ refreshKey = 0 }: { refreshKey?: number }) {
   const [preset, setPreset] = useState("30d");
   const [granularity, setGranularity] = useState("day");
   const [from, setFrom] = useState("");
@@ -39,7 +39,7 @@ export function ReportsDesk() {
       .then((next) => { if (!cancelled) { setReport(next); setError(""); } })
       .catch((caught) => { if (!cancelled) setError(caught instanceof Error ? caught.message : "Der Bericht konnte nicht geladen werden."); });
     return () => { cancelled = true; };
-  }, [preset, granularity, from, to]);
+  }, [preset, granularity, from, to, refreshKey]);
 
   async function download() {
     const params = new URLSearchParams({ preset, granularity });

@@ -130,14 +130,24 @@ export function OrderDesk({ mode, refreshKey, freshIds }: { mode: "orders" | "de
   }, [selectedId, refreshKey]);
 
   async function updateStatus(id: string, nextStatus: string) {
-    const updated = await api<DeskOrder>(`/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status: nextStatus }) });
-    setSelected(updated);
-    setData((current) => current ? { ...current, items: current.items.map((order) => order.id === id ? { ...order, status: updated.status } : order) } : current);
+    setError("");
+    try {
+      const updated = await api<DeskOrder>(`/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status: nextStatus }) });
+      setSelected(updated);
+      setData((current) => current ? { ...current, items: current.items.map((order) => order.id === id ? { ...order, status: updated.status } : order) } : current);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Der Status wurde nicht geändert.");
+    }
   }
 
   async function collectCash(id: string) {
-    const updated = await api<DeskOrder>(`/api/admin/orders/${id}/payment`, { method: "POST", body: JSON.stringify({ collected: true }) });
-    setSelected(updated);
+    setError("");
+    try {
+      const updated = await api<DeskOrder>(`/api/admin/orders/${id}/payment`, { method: "POST", body: JSON.stringify({ collected: true }) });
+      setSelected(updated);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Die Barzahlung wurde nicht als kassiert gespeichert.");
+    }
   }
 
   const pages = data ? Math.max(1, Math.ceil(data.total / data.pageSize)) : 1;

@@ -56,12 +56,42 @@ textarea {
 }
 
 .rise-in {
-  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.category-rail-track {
+  animation: category-rail 28s linear infinite;
+}
+
+.category-rail:hover .category-rail-track,
+.category-rail:focus-within .category-rail-track {
+  animation-play-state: paused;
+}
+
+@keyframes category-rail {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.375rem));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .category-rail {
+    overflow-x: auto;
+  }
+
+  .category-rail-track {
+    animation: none;
+  }
+
+  .category-rail-track > div:last-child {
+    display: none;
   }
 
   *,
