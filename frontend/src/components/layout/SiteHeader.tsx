@@ -100,8 +100,9 @@ export function SiteHeader({ restaurant }: { restaurant: Restaurant }) {
               <ShoppingBag className="h-4 w-4" />
               <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center bg-brand px-1 text-[11px] text-white">{count}</span>
             </button>
-            <button type="button" className="grid h-11 w-11 place-items-center rounded-full border border-ink/10 bg-white lg:hidden" aria-label="Menü" onClick={() => setOpen((value) => !value)}>
+            <button type="button" className="flex h-14 w-12 flex-col items-center justify-center gap-0.5 rounded-full border border-ink/10 bg-white lg:hidden" aria-label="Menü" onClick={() => setOpen((value) => !value)}>
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              <span className="text-[10px] font-semibold leading-none">Menü</span>
             </button>
           </div>
         </div>
