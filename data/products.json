@@ -6477,7 +6477,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": []
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ]
       },
       {
         "label": "Gross",
@@ -6489,7 +6705,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": []
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ]
       },
       {
         "label": "Familie",
@@ -6501,7 +6933,223 @@
         "sortOrder": 2,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": []
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 450
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 200
+          }
+        ]
       },
       {
         "label": "Party",
@@ -6513,7 +7161,223 @@
         "sortOrder": 3,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": []
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 300
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 550
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 350
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 300
+          }
+        ]
       }
     ]
   },
@@ -43641,7 +44505,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
         "sizeLabelFromPopup": "Klein ( ca 28cm )"
       },
       {
@@ -43654,7 +44734,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ],
         "sizeLabelFromPopup": "Gross ( ca 32cm )"
       }
     ]
@@ -43677,7 +44973,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
         "sizeLabelFromPopup": "Klein ( ca 28cm )"
       },
       {
@@ -43690,7 +45202,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ],
         "sizeLabelFromPopup": "Gross ( ca 32cm )"
       }
     ]
@@ -43713,7 +45441,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
         "sizeLabelFromPopup": "Klein ( ca 28cm )"
       },
       {
@@ -43726,7 +45670,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ],
         "sizeLabelFromPopup": "Gross ( ca 32cm )"
       }
     ]
@@ -44217,7 +46377,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
         "sizeLabelFromPopup": "Klein ( ca 28cm )"
       },
       {
@@ -44230,7 +46606,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ],
         "sizeLabelFromPopup": "Gross ( ca 32cm )"
       }
     ]
@@ -44253,7 +46845,223 @@
         "sortOrder": 0,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 200
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 80
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 80
+          }
+        ],
         "sizeLabelFromPopup": "Klein ( ca 28cm )"
       },
       {
@@ -44266,7 +47074,223 @@
         "sortOrder": 1,
         "includedExtraCount": 0,
         "choiceGroups": [],
-        "extras": [],
+        "extras": [
+          {
+            "sourceExtraId": "1",
+            "name": "Frische Champignons",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "2",
+            "name": "Frische Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "3",
+            "name": "Zwiebeln",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "4",
+            "name": "Rucola",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "5",
+            "name": "Erbsen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "6",
+            "name": "fr.Tomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "7",
+            "name": "Scharfe Peproni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "8",
+            "name": "Mais",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "9",
+            "name": "Ananas",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "10",
+            "name": "Milde Peperoni",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "11",
+            "name": "Schwarze Oliven",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "12",
+            "name": "Cherrytomaten",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "13",
+            "name": "Spinat",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "14",
+            "name": "Broccoli",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "15",
+            "name": "Knoblauch",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "16",
+            "name": "Kapern",
+            "priceCents": 50
+          },
+          {
+            "sourceExtraId": "17",
+            "name": "Artischocken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "18",
+            "name": "Hackfleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "19",
+            "name": "Rff-Schinken",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "20",
+            "name": "Sucuk",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "22",
+            "name": "Salami",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "23",
+            "name": "Hähnchenbrust",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "36",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "26",
+            "name": "Thunfisch",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "27",
+            "name": "Meeresfrüchte",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "29",
+            "name": "Schrimps",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "30",
+            "name": "Sardellen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "31",
+            "name": "Extra Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "32",
+            "name": "Schäfkäse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "33",
+            "name": "Mozzarella-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "34",
+            "name": "Gorgonzola-Käse",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "37",
+            "name": "Rote Paprika",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "38",
+            "name": "ohne Käse",
+            "priceCents": 0
+          },
+          {
+            "sourceExtraId": "39",
+            "name": "mit Käserandfüllung",
+            "priceCents": 250
+          },
+          {
+            "sourceExtraId": "40",
+            "name": "Ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "41",
+            "name": "Spiegel ei",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "42",
+            "name": "Döner fleisch",
+            "priceCents": 150
+          },
+          {
+            "sourceExtraId": "43",
+            "name": "Bbq-sauce",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "44",
+            "name": "Chili",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "45",
+            "name": "Bolognese",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "46",
+            "name": "Speck",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "47",
+            "name": "Backen",
+            "priceCents": 100
+          },
+          {
+            "sourceExtraId": "48",
+            "name": "Lachs",
+            "priceCents": 100
+          }
+        ],
         "sizeLabelFromPopup": "Gross ( ca 32cm )"
       }
     ]
