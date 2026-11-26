@@ -1,8 +1,10 @@
+import { publicApiBase } from "./public-url";
+
 let csrfToken = "";
 
 export async function ensureCsrf() {
   if (csrfToken) return csrfToken;
-  const response = await fetch("/api/auth/csrf", { credentials: "include" });
+  const response = await fetch(`${publicApiBase()}/api/auth/csrf`, { credentials: "include" });
   const data = (await response.json()) as { csrfToken?: string };
   csrfToken = data.csrfToken ?? "";
   return csrfToken;
@@ -15,7 +17,7 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
     headers.set("content-type", "application/json");
     headers.set("x-csrf-token", await ensureCsrf());
   }
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? ""}${path}`, {
+  const response = await fetch(`${publicApiBase()}${path}`, {
     ...init,
     headers,
     credentials: "include",

@@ -3,7 +3,9 @@ import path from "node:path";
 import { isRestaurantOpen, type OpeningHour } from "@pizzablitz/shared";
 import type { Category, Product, Restaurant, SiteContent, Variant } from "@/types/catalog";
 
-const backend = process.env.BACKEND_URL ?? "http://localhost:4000";
+import { backendOrigin } from "./public-url";
+
+const backend = backendOrigin();
 const dataDir = path.join(process.cwd(), "..", "data");
 
 const offerImages: Record<string, string> = {

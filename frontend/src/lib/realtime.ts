@@ -1,11 +1,10 @@
 "use client";
 
 import { io, type Socket } from "socket.io-client";
+import { publicSocketUrl } from "./public-url";
 
 export function socketUrl() {
-  if (process.env.NEXT_PUBLIC_SOCKET_URL) return process.env.NEXT_PUBLIC_SOCKET_URL;
-  if (typeof window !== "undefined" && window.location.hostname !== "localhost") return window.location.origin;
-  return "http://localhost:4000";
+  return publicSocketUrl();
 }
 
 export function openSocket(auth: { ticket?: string; trackingToken?: string }) {

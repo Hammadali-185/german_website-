@@ -30,6 +30,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: { default: "Pizza Blitz Östringen", template: "%s · Pizza Blitz" },
   description: "Pizza, Burger und italienische Spezialitäten von Toni's Pizzablitz in Östringen. Frisch zubereitet, zum Abholen oder Liefern.",
+  icons: {
+    icon: [{ url: "/images/original/logo.png", type: "image/png" }],
+    shortcut: "/images/original/logo.png",
+    apple: "/images/original/logo.png",
+  },
   openGraph: {
     title: "Pizza Blitz Östringen",
     description: "Frisch aus dem Ofen. Direkt zu dir.",

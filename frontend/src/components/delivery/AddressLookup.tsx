@@ -91,7 +91,7 @@ export function AddressLookup({ shop, selected, onSelect, onClear }: Props) {
           autoComplete="off"
           value={selected ? selected.label : query}
           readOnly={Boolean(selected)}
-          placeholder="Straße, Ort oder Ortsteil"
+          placeholder="Firma, Straße, Landmarke oder Ort"
           className="w-full border border-ink/15 py-3 pl-10 pr-12"
           onChange={(event) => {
             setQuery(event.target.value);
@@ -122,13 +122,13 @@ export function AddressLookup({ shop, selected, onSelect, onClear }: Props) {
         <p className={`mt-2 text-sm ${outside ? "text-brand" : "text-mute"}`}>
           {selected.detail ? `${selected.detail}. ` : ""}
           {selectedDistance == null ? "" : `${selectedDistance.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} km vom Shop. `}
-          {outside ? OUTSIDE_DELIVERY_RADIUS_MESSAGE : ""}
+          {outside ? OUTSIDE_DELIVERY_RADIUS_MESSAGE : "Diese Adresse liegt im Lieferradius."}
         </p>
       ) : null}
       {loading ? <p className="mt-2 text-sm text-mute">Suche Adressen…</p> : null}
       {error ? <p className="mt-2 text-sm text-brand">{error}</p> : null}
       {open && !selected && !loading && query.trim().length >= 2 && suggestions.length === 0 && !error ? (
-        <p className="mt-2 text-sm text-mute">Keine Adresse gefunden.</p>
+        <p className="mt-2 text-sm text-brand">Diese Adresse konnte nicht gefunden werden. Bitte einen Vorschlag mit Straße und Ort wählen.</p>
       ) : null}
       {open && !selected && suggestions.length > 0 ? (
         <ul id={listId} role="listbox" className="absolute z-30 mt-2 max-h-[40vh] w-full overflow-y-auto border border-ink/10 bg-white shadow-card">

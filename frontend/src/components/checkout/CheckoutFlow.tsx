@@ -252,6 +252,9 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                     setAreaId(cityMatch?.id ?? (postalMatches.length === 1 ? postalMatches[0].id : ""));
                   }}
                 />
+                {place && !withinDeliveryRadius(restaurant, place) ? (
+                  <p className="text-sm text-brand">{OUTSIDE_DELIVERY_RADIUS_MESSAGE}</p>
+                ) : null}
                 {place && withinDeliveryRadius(restaurant, place) ? (
                 <div className="grid gap-2">
                   {matches.map((area) => (
@@ -260,7 +263,10 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                       {area.deliveryFeeCents == null ? " · keine veröffentlichte Liefergebühr" : ` · ${formatEuro(area.deliveryFeeCents)} Liefergebühr`}
                     </button>
                   ))}
-                  {address.postalCode.length === 5 && matches.length === 0 ? <p className="text-sm text-brand">Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.</p> : null}
+                  {!place.postalCode || place.postalCode.length !== 5 ? (
+                    <p className="text-sm text-brand">Diese Adresse konnte nicht vollständig geortet werden. Bitte einen Vorschlag mit Postleitzahl wählen.</p>
+                  ) : null}
+                  {place.postalCode.length === 5 && matches.length === 0 ? <p className="text-sm text-brand">Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.</p> : null}
                   {matches.length > 1 && !areaId ? <p className="text-sm text-mute">Bitte den passenden Ort auswählen.</p> : null}
                 </div>
                 ) : null}
@@ -329,15 +335,23 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                 }
                 if (step === 2 && fulfillment === "DELIVERY") {
                   if (!place) {
-                    setError("Bitte eine Adresse aus den Vorschlägen auswählen.");
+                    setError("Diese Adresse konnte nicht gefunden werden. Bitte einen Vorschlag auswählen.");
+                    return;
+                  }
+                  if (!Number.isFinite(place.latitude) || !Number.isFinite(place.longitude)) {
+                    setError("Diese Adresse konnte nicht gefunden werden. Bitte einen Vorschlag auswählen.");
                     return;
                   }
                   if (!withinDeliveryRadius(restaurant, place)) {
                     setError(OUTSIDE_DELIVERY_RADIUS_MESSAGE);
                     return;
                   }
-                  if (!areaId) {
-                    setError("Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.");
+                  if (!place.postalCode || place.postalCode.length !== 5 || !areaId) {
+                    setError(
+                      place.postalCode && place.postalCode.length === 5 && matches.length === 0
+                        ? "Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete."
+                        : "Diese Adresse konnte nicht vollständig geortet werden. Bitte einen Vorschlag mit Postleitzahl und Ort wählen.",
+                    );
                     return;
                   }
                 }

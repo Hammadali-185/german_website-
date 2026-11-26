@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { backendOrigin } from "./src/lib/public-url";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@pizzablitz/shared"],
@@ -14,7 +15,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.BACKEND_URL ?? "http://localhost:4000"}/api/:path*`,
+        destination: `${backendOrigin()}/api/:path*`,
       },
     ];
   },
