@@ -6,7 +6,9 @@ import { suggestAddresses } from "./geocode.service.js";
 
 const checkSchema = z.object({
   postalCode: z.string().trim().regex(/^\d{5}$/, "Bitte eine fünfstellige Postleitzahl eingeben."),
+  city: z.string().trim().optional(),
   locality: z.string().trim().optional(),
+  district: z.string().trim().optional(),
   subtotalCents: z.number().int().nonnegative().optional(),
 });
 

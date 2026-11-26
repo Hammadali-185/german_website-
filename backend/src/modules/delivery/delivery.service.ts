@@ -1,4 +1,4 @@
-import { distanceKm, evaluateFulfillment, isRestaurantOpen, OUTSIDE_DELIVERY_RADIUS_MESSAGE, withinDeliveryRadius, type OpeningHour } from "@pizzablitz/shared";
+import { distanceKm, evaluateFulfillment, isRestaurantOpen, matchDeliveryAreas, OUTSIDE_DELIVERY_RADIUS_MESSAGE, pickDeliveryArea, withinDeliveryRadius, type OpeningHour } from "@pizzablitz/shared";
 import { prisma } from "../../database/prisma.js";
 import { HttpError } from "../../utils/http.js";
 
@@ -9,34 +9,47 @@ export async function listDeliveryAreas() {
   });
 }
 
-export async function checkDelivery(input: { postalCode: string; locality?: string; subtotalCents?: number }) {
+export async function checkDelivery(input: {
+  postalCode: string;
+  city?: string;
+  locality?: string;
+  district?: string;
+  subtotalCents?: number;
+}) {
   const postalCode = input.postalCode.trim();
-  const matches = await prisma.deliveryArea.findMany({
-    where: {
-      active: true,
-      postalCode,
-      locality: input.locality ? { equals: input.locality, mode: "insensitive" } : undefined,
-    },
+  const byPostal = await prisma.deliveryArea.findMany({
+    where: { active: true, postalCode },
     orderBy: { locality: "asc" },
   });
   const restaurant = await prisma.restaurant.findFirst();
   if (!restaurant) throw new HttpError(503, "Restaurantdaten sind noch nicht geladen.", "NOT_READY");
-  const area = input.locality ? matches[0] ?? null : matches.length === 1 ? matches[0] : null;
+
+  const place = {
+    postalCode,
+    city: input.city || input.locality,
+    district: input.district,
+    locality: input.locality,
+  };
+  const matched = matchDeliveryAreas(byPostal, place);
+  const area = pickDeliveryArea(byPostal, place);
   const decision = evaluateFulfillment({
     fulfillment: "DELIVERY",
     subtotalCents: input.subtotalCents ?? area?.minimumOrderCents ?? 0,
     area,
     pickupMinimumCents: restaurant.pickupMinimumCents,
   });
+  // Confident matches first; otherwise offer every area for this PLZ so the guest can choose.
+  const pool = matched.length ? matched : byPostal;
+  const matches = pool.map((match) => ({
+    id: match.id,
+    postalCode: match.postalCode,
+    locality: match.locality,
+    minimumOrderCents: match.minimumOrderCents,
+    deliveryFeeCents: match.deliveryFeeCents,
+  }));
   return {
-    matches: matches.map((match) => ({
-      id: match.id,
-      postalCode: match.postalCode,
-      locality: match.locality,
-      minimumOrderCents: match.minimumOrderCents,
-      deliveryFeeCents: match.deliveryFeeCents,
-    })),
-    needsLocality: !input.locality && matches.length > 1,
+    matches,
+    needsLocality: !area && matches.length > 1,
     decision,
   };
 }

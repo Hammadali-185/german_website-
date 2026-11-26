@@ -12,6 +12,8 @@ export type AddressSuggestion = {
   street: string;
   postalCode: string;
   city: string;
+  district?: string;
+  locality?: string;
   latitude: number;
   longitude: number;
   distanceKm: number;

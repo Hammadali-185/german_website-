@@ -32,6 +32,8 @@ export type AddressSuggestion = {
   street: string;
   postalCode: string;
   city: string;
+  district: string;
+  locality: string;
   latitude: number;
   longitude: number;
   distanceKm: number;
@@ -150,6 +152,10 @@ export function toSuggestion(feature: PhotonFeature, index: number, shop: { lati
   const streetLine = [properties.street, properties.housenumber].filter(Boolean).join(" ").trim();
   const placeName = properties.name?.trim() ?? "";
   const city = (properties.city || properties.locality || properties.district || properties.county || "").trim();
+  const districtRaw = (properties.district || "").trim();
+  const localityRaw = (properties.locality || "").trim();
+  const district = districtRaw && districtRaw.toLowerCase() !== city.toLowerCase() ? districtRaw : "";
+  const locality = localityRaw && localityRaw.toLowerCase() !== city.toLowerCase() && localityRaw.toLowerCase() !== district.toLowerCase() ? localityRaw : "";
   const postalCode = (properties.postcode ?? "").trim();
   const label = placeName || streetLine || city;
   if (!label) return null;
@@ -157,7 +163,7 @@ export function toSuggestion(feature: PhotonFeature, index: number, shop: { lati
   const detailParts = [
     placeName && streetLine ? streetLine : "",
     !placeName && streetLine && streetLine !== label ? streetLine : "",
-    properties.district && properties.district !== city ? properties.district : "",
+    district || locality,
     [postalCode, city].filter(Boolean).join(" "),
     properties.state && properties.state !== city ? properties.state : "",
   ].filter(Boolean);
@@ -169,6 +175,8 @@ export function toSuggestion(feature: PhotonFeature, index: number, shop: { lati
     street: streetLine || placeName || label,
     postalCode,
     city,
+    district,
+    locality,
     latitude,
     longitude,
     distanceKm: Math.round(distanceKm(shop, { latitude, longitude }) * 10) / 10,

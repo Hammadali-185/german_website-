@@ -27,10 +27,64 @@ describe("address suggestions", () => {
       street: "Franz-Gurk-Straße 12",
       postalCode: "76684",
       city: "Östringen",
+      district: "",
+      locality: "",
     });
     expect(suggestion?.distanceKm).toBeLessThan(3);
     expect(suggestion?.latitude).toBe(49.2261167);
     expect(suggestion?.longitude).toBe(8.7269674);
+  });
+
+  it("exposes city/district/locality separately for Liefergebiet matching", () => {
+    const center = toSuggestion(
+      {
+        geometry: { coordinates: [8.71233, 49.2186704] },
+        properties: {
+          osm_id: 1506051902,
+          name: "Freiwillige Feuerwehr Östringen",
+          street: "Hauptstraße",
+          housenumber: "116",
+          postcode: "76684",
+          city: "Östringen",
+          district: "Östringen",
+          countrycode: "DE",
+        },
+      },
+      0,
+      shop,
+    );
+    expect(center).toMatchObject({
+      label: "Freiwillige Feuerwehr Östringen",
+      street: "Hauptstraße 116",
+      postalCode: "76684",
+      city: "Östringen",
+      district: "",
+      locality: "",
+      distanceKm: 0,
+    });
+
+    const ortsteil = toSuggestion(
+      {
+        geometry: { coordinates: [8.7493232, 49.1767577] },
+        properties: {
+          osm_id: 2,
+          name: "Freiwillige Feuerwehr Odenheim",
+          street: "Zufahrt Alte Schule",
+          postcode: "76684",
+          city: "Östringen",
+          district: "Odenheim",
+          countrycode: "DE",
+        },
+      },
+      1,
+      shop,
+    );
+    expect(ortsteil).toMatchObject({
+      city: "Östringen",
+      district: "Odenheim",
+      locality: "",
+      postalCode: "76684",
+    });
   });
 
   it("rejects incomplete coordinates and non-German results", () => {

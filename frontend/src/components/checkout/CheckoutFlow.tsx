@@ -6,7 +6,7 @@ import { openSocket, type LiveSocket } from "@/lib/realtime";
 import { formatEuro } from "@/lib/format";
 import { priceCartLine, useCart } from "@/store/cart";
 import type { Restaurant } from "@/types/catalog";
-import { customerStatusMessage, OUTSIDE_DELIVERY_RADIUS_MESSAGE, statusLabel, withinDeliveryRadius } from "@pizzablitz/shared";
+import { customerStatusMessage, OUTSIDE_DELIVERY_RADIUS_MESSAGE, pickDeliveryArea, statusLabel, withinDeliveryRadius } from "@pizzablitz/shared";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -41,7 +41,8 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
   const idempotencyKey = useRef(crypto.randomUUID());
   const [submitting, setSubmitting] = useState(false);
   const subtotal = useMemo(() => lines.reduce((sum, line) => sum + priceCartLine(line).lineTotalCents, 0), [lines]);
-  const matches = areas.filter((area) => area.postalCode === address.postalCode);
+  const postalMatches = areas.filter((area) => area.postalCode === address.postalCode);
+  const areaChoices = postalMatches;
 
   useEffect(() => {
     setHydrated(useCart.persist.hasHydrated());
@@ -247,9 +248,13 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                   onSelect={(suggestion) => {
                     setPlace(suggestion);
                     setAddress({ street: suggestion.street, postalCode: suggestion.postalCode, city: suggestion.city });
-                    const postalMatches = areas.filter((area) => area.postalCode === suggestion.postalCode);
-                    const cityMatch = postalMatches.find((area) => area.locality.toLowerCase() === suggestion.city.toLowerCase());
-                    setAreaId(cityMatch?.id ?? (postalMatches.length === 1 ? postalMatches[0].id : ""));
+                    const chosen = pickDeliveryArea(areas, {
+                      postalCode: suggestion.postalCode,
+                      city: suggestion.city,
+                      district: suggestion.district,
+                      locality: suggestion.locality,
+                    });
+                    setAreaId(chosen?.id ?? "");
                   }}
                 />
                 {place && !withinDeliveryRadius(restaurant, place) ? (
@@ -257,7 +262,7 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                 ) : null}
                 {place && withinDeliveryRadius(restaurant, place) ? (
                 <div className="grid gap-2">
-                  {matches.map((area) => (
+                  {areaChoices.map((area) => (
                     <button key={area.id} type="button" onClick={() => setAreaId(area.id)} className={`border px-3 py-3 text-left text-sm ${areaId === area.id ? "border-brand" : "border-ink/10"}`}>
                       {area.locality} · Mindestbestellwert {formatEuro(area.minimumOrderCents)}
                       {area.deliveryFeeCents == null ? " · keine veröffentlichte Liefergebühr" : ` · ${formatEuro(area.deliveryFeeCents)} Liefergebühr`}
@@ -266,8 +271,8 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                   {!place.postalCode || place.postalCode.length !== 5 ? (
                     <p className="text-sm text-brand">Diese Adresse konnte nicht vollständig geortet werden. Bitte einen Vorschlag mit Postleitzahl wählen.</p>
                   ) : null}
-                  {place.postalCode.length === 5 && matches.length === 0 ? <p className="text-sm text-brand">Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.</p> : null}
-                  {matches.length > 1 && !areaId ? <p className="text-sm text-mute">Bitte den passenden Ort auswählen.</p> : null}
+                  {place.postalCode.length === 5 && postalMatches.length === 0 ? <p className="text-sm text-brand">Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.</p> : null}
+                  {areaChoices.length > 1 && !areaId ? <p className="text-sm text-mute">Bitte den passenden Ort auswählen.</p> : null}
                 </div>
                 ) : null}
               </>
@@ -348,9 +353,11 @@ export function CheckoutFlow({ restaurant }: { restaurant: Restaurant }) {
                   }
                   if (!place.postalCode || place.postalCode.length !== 5 || !areaId) {
                     setError(
-                      place.postalCode && place.postalCode.length === 5 && matches.length === 0
+                      place.postalCode && place.postalCode.length === 5 && postalMatches.length === 0
                         ? "Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete."
-                        : "Diese Adresse konnte nicht vollständig geortet werden. Bitte einen Vorschlag mit Postleitzahl und Ort wählen.",
+                        : areaChoices.length > 1 && !areaId
+                          ? "Bitte den passenden Ort auswählen."
+                          : "Diese Adresse konnte nicht vollständig geortet werden. Bitte einen Vorschlag mit Postleitzahl und Ort wählen.",
                     );
                     return;
                   }

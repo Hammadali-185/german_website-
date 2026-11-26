@@ -3,8 +3,8 @@
 import { AddressLookup, type AddressSuggestion } from "@/components/delivery/AddressLookup";
 import { api } from "@/lib/api";
 import { formatEuro } from "@/lib/format";
-import { withinDeliveryRadius, type GeoPoint } from "@pizzablitz/shared";
-import { useState } from "react";
+import { matchDeliveryAreas, pickDeliveryArea, withinDeliveryRadius, type GeoPoint } from "@pizzablitz/shared";
+import { useMemo, useState } from "react";
 
 type Area = { id: string; postalCode: string; locality: string; minimumOrderCents: number; deliveryFeeCents: number | null };
 
@@ -17,34 +17,57 @@ type CheckResult = {
 export function DeliveryChecker({ areas, shop }: { areas: Area[]; shop: GeoPoint }) {
   const [postalCode, setPostalCode] = useState("");
   const [locality, setLocality] = useState("");
+  const [district, setDistrict] = useState("");
   const [place, setPlace] = useState<AddressSuggestion | null>(null);
   const [result, setResult] = useState<CheckResult | null>(null);
   const [error, setError] = useState("");
-  const known = areas.filter((area) => area.postalCode === postalCode);
+  const known = useMemo(() => {
+    const matched = matchDeliveryAreas(areas, { postalCode, city: locality, district, locality: place?.locality });
+    return matched.length ? matched : areas.filter((area) => area.postalCode === postalCode);
+  }, [areas, postalCode, locality, district, place?.locality]);
   const outside = place ? !withinDeliveryRadius(shop, place) : false;
 
-  async function check(nextPostal = postalCode, nextLocality = locality) {
+  async function check(nextPostal = postalCode, nextCity = locality, nextDistrict = district, nextLocality = place?.locality ?? "") {
     setError("");
     try {
       const data = await api<CheckResult>("/api/delivery/check", {
         method: "POST",
-        body: JSON.stringify({ postalCode: nextPostal, locality: nextLocality || undefined }),
+        body: JSON.stringify({
+          postalCode: nextPostal,
+          city: nextCity || undefined,
+          locality: nextLocality || nextCity || undefined,
+          district: nextDistrict || undefined,
+        }),
       });
       setResult(data);
     } catch {
-      const matches = areas.filter((area) => area.postalCode === nextPostal && (!nextLocality || area.locality.toLowerCase() === nextLocality.toLowerCase()));
       if (nextPostal.length !== 5) {
         setResult(null);
         setError("Bitte eine fünfstellige Postleitzahl eingeben.");
         return;
       }
-      const chosen = nextLocality ? matches[0] ?? null : matches.length === 1 ? matches[0] : null;
+      const placeHints = {
+        postalCode: nextPostal,
+        city: nextCity,
+        district: nextDistrict,
+        locality: nextLocality,
+      };
+      const byPostal = areas.filter((area) => area.postalCode === nextPostal);
+      const matched = matchDeliveryAreas(areas, placeHints);
+      const chosen = pickDeliveryArea(areas, placeHints);
+      const matches = matched.length ? matched : byPostal;
       setResult({
         matches,
-        needsLocality: !nextLocality && matches.length > 1,
+        needsLocality: !chosen && matches.length > 1,
         decision: chosen
           ? { ok: true, minimumOrderCents: chosen.minimumOrderCents, deliveryFeeCents: chosen.deliveryFeeCents ?? 0 }
-          : { ok: false, code: "AREA", message: "Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete." },
+          : {
+              ok: false,
+              code: "AREA",
+              message: matches.length
+                ? "Bitte den Ort auswählen. Diese Postleitzahl hat mehrere Liefergebiete."
+                : "Diese Adresse liegt außerhalb der veröffentlichten Liefergebiete.",
+            },
       });
     }
   }
@@ -64,6 +87,7 @@ export function DeliveryChecker({ areas, shop }: { areas: Area[]; shop: GeoPoint
           setPlace(null);
           setPostalCode("");
           setLocality("");
+          setDistrict("");
           setResult(null);
           setError("");
         }}
@@ -71,9 +95,10 @@ export function DeliveryChecker({ areas, shop }: { areas: Area[]; shop: GeoPoint
           setPlace(suggestion);
           setPostalCode(suggestion.postalCode);
           setLocality(suggestion.city);
+          setDistrict(suggestion.district ?? "");
           setResult(null);
           if (withinDeliveryRadius(shop, suggestion) && /^\d{5}$/.test(suggestion.postalCode)) {
-            void check(suggestion.postalCode, suggestion.city);
+            void check(suggestion.postalCode, suggestion.city, suggestion.district ?? "", suggestion.locality ?? "");
           }
         }}
       />
@@ -85,7 +110,8 @@ export function DeliveryChecker({ areas, shop }: { areas: Area[]; shop: GeoPoint
               type="button"
               onClick={() => {
                 setLocality(area.locality);
-                void check(area.postalCode, area.locality);
+                setDistrict("");
+                void check(area.postalCode, area.locality, "", area.locality);
               }}
               className={`min-h-11 border px-3 py-2 text-left text-sm ${locality === area.locality ? "border-brand" : "border-ink/10"}`}
             >
