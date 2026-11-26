@@ -48,13 +48,23 @@ export function HomeHero({ open }: { open: boolean }) {
           </Link>
         </motion.div>
         <motion.div {...rise(0.1)} className="mt-4 max-w-2xl space-y-3 text-base leading-relaxed text-mute">
-          <p>Pizza Blitz Östringen Heimservice. Frisch, heiß und lecker. Wir bieten dir das Beste aus unserer Küche. Probiere noch heute Pizza &amp; Pasta, Burger, Indisch. Eine Online-Bestellung ist mit wenigen Klicks getan – entdecken Sie selbst, wie einfach es ist! Genießen Sie unsere abwechslungsreiche Küche! Sie können Pizza, Pasta, Auflauf, Salate, Fleischgerichte, Beilagen, Snacks, Extras, Dessert und Drinks online bestellen.</p>
-          <p>10% Rabatt für alle Kunden, die über unseren Onlineshop bestellen. Fußball Angebot!</p>
-          <p>15% Rabatt, wer bei uns vom 01.06.2026 bis 15.07.2026 eine telefonische Bestellung aufgibt.</p>
-          <p>Gratis-Artikel: Bei Anruf Mindestbestellwert ab 35€.</p>
-          <p>Tel. <a href="tel:0725326560" className="font-semibold text-ink">07253 26560</a> (Bekommen Sie als Gratis einen Spaghetti Eis oder Cola 1L nach Wahl.)</p>
-          <p>All unsere Gerichte können Sie auch bei uns liefern lassen oder selbst abholen!</p>
-          <p>Wir freuen uns auf Ihre Bestellung.</p>
+          <p>
+            Pizza Blitz Östringen Heimservice. Frisch – heiß und lecker. Wir bieten dir das Beste aus unserer Küche.
+            Probiere noch heute Pizza &amp; Pasta, Burger, Indisch. Eine Online-Bestellung ist mit wenigen Klicks getan
+            – entdecken Sie selbst, wie einfach es ist! Genießen Sie unsere abwechslungsreiche Küche! Sie können Pizza,
+            Pasta, Auflauf, Salate, Fleischgerichte, Beilagen, Snacks, Extras, Dessert und Drinks online bestellen.
+          </p>
+          <p>10% Rabatt für alle Kunden die über unseren Onlineshop bestellen</p>
+          <p>Gratis-Artikel: Bei Anruf Mindestbestellwert Ab 35€</p>
+          <p>
+            Tel.{" "}
+            <a href="tel:0725326560" className="font-semibold text-ink">
+              0725326560
+            </a>{" "}
+            (Bekommen Sie Als Gratis einen Spaghetti Eis oder Cola 1L nach wahl)
+          </p>
+          <p>All unsere Gerichte können Sie auch bei uns liefern lassen oder Selbstabholen!</p>
+          <p>Wir freuen uns auf Ihre Bestellung</p>
         </motion.div>
         <motion.div {...rise(0.14)} className="mt-8 flex flex-wrap gap-3">
           <Link href="/menu" className="inline-flex min-h-12 items-center rounded-full bg-brand px-6 text-sm font-semibold text-white shadow-card transition hover:bg-brand-deep">
