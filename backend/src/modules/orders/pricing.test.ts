@@ -35,6 +35,25 @@ describe("priceLine", () => {
     expect(line.unitPriceCents).toBe(3050);
   });
 
+  it("always charges Käserandfüllung outside the free topping allowance", () => {
+    const line = priceLine({
+      basePriceCents: 2850,
+      choices: [{ priceCents: 0 }],
+      extras: [
+        { priceCents: 450, countsTowardIncluded: false },
+        { priceCents: 200 },
+        { priceCents: 200 },
+        { priceCents: 200 },
+        { priceCents: 200 },
+      ],
+      includedExtraCount: 3,
+      quantity: 1,
+    });
+    expect(line.freeExtraCount).toBe(3);
+    expect(line.chargedExtraCents).toBe(650);
+    expect(line.unitPriceCents).toBe(3500);
+  });
+
   it("adds choice prices", () => {
     const line = priceLine({
       basePriceCents: 1100,

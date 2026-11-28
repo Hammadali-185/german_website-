@@ -1,11 +1,11 @@
 "use client";
 
-import { cartLineKey, priceLine } from "@pizzablitz/shared";
+import { cartLineKey, extraCountsTowardIncluded, priceLine } from "@pizzablitz/shared";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export type CartChoice = { id: string; group: string; label: string; priceCents: number };
-export type CartExtra = { id: string; name: string; priceCents: number };
+export type CartExtra = { id: string; name: string; priceCents: number; countsTowardIncluded?: boolean };
 
 export type CartLine = {
   key: string;
@@ -76,7 +76,10 @@ export function priceCartLine(line: CartLine) {
   return priceLine({
     basePriceCents: line.basePriceCents,
     choices: line.choices,
-    extras: line.extras,
+    extras: line.extras.map((extra) => ({
+      priceCents: extra.priceCents,
+      countsTowardIncluded: extra.countsTowardIncluded ?? extraCountsTowardIncluded(extra.name),
+    })),
     includedExtraCount: line.includedExtraCount,
     quantity: line.quantity,
   });

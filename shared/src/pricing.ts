@@ -1,5 +1,9 @@
 export type PricedChoice = { priceCents: number };
-export type PricedExtra = { priceCents: number };
+export type PricedExtra = {
+  priceCents: number;
+  /** When false, always charged and never consumes a free topping slot. Default true. */
+  countsTowardIncluded?: boolean;
+};
 
 export type LinePriceInput = {
   basePriceCents: number;
@@ -16,6 +20,11 @@ export type LinePrice = {
   freeExtraCount: number;
 };
 
+/** Side upgrades like Käserandfüllung stay paid and outside the free-topping allowance. */
+export function extraCountsTowardIncluded(name: string) {
+  return !/k[aä]serandf[uü]llung/i.test(name.trim());
+}
+
 export function priceLine(input: LinePriceInput): LinePrice {
   if (!Number.isInteger(input.quantity) || input.quantity < 1) {
     throw new Error("Menge muss eine ganze Zahl ab 1 sein.");
@@ -23,13 +32,14 @@ export function priceLine(input: LinePriceInput): LinePrice {
   const included = Math.max(0, input.includedExtraCount);
   let chargedExtraCents = 0;
   let freeExtraCount = 0;
-  input.extras.forEach((extra, index) => {
-    if (index < included) {
+  for (const extra of input.extras) {
+    const counts = extra.countsTowardIncluded !== false;
+    if (counts && freeExtraCount < included) {
       freeExtraCount += 1;
-      return;
+      continue;
     }
-    chargedExtraCents += extra.priceCents;
-  });
+    chargedExtraCents += Math.max(0, extra.priceCents);
+  }
   const choiceCents = input.choices.reduce((sum, choice) => sum + choice.priceCents, 0);
   const unitPriceCents = input.basePriceCents + choiceCents + chargedExtraCents;
   return {

@@ -1,4 +1,4 @@
-import { assertChoiceSelection, customerStatusMessage, orderCode, orderTotalCents, priceLine } from "@pizzablitz/shared";
+import { assertChoiceSelection, customerStatusMessage, extraCountsTowardIncluded, orderCode, orderTotalCents, priceLine } from "@pizzablitz/shared";
 import { Prisma, type OrderStatus } from "@prisma/client";
 import type { z } from "zod";
 import { randomUUID } from "node:crypto";
@@ -71,7 +71,10 @@ export async function priceItems(items: CartItem[]) {
     const priced = priceLine({
       basePriceCents: variant.priceCents,
       choices: selectedChoices.map((choice) => ({ priceCents: choice.priceCents })),
-      extras: extras.map((extra) => ({ priceCents: extra.priceCents })),
+      extras: extras.map((extra) => ({
+        priceCents: extra.priceCents,
+        countsTowardIncluded: extraCountsTowardIncluded(extra.extra.name),
+      })),
       includedExtraCount: variant.includedExtraCount,
       quantity: item.quantity,
     });
@@ -212,11 +215,19 @@ export async function createOrder(input: z.infer<typeof orderSchema>, userId?: s
                   label: choice.label,
                   priceCents: choice.priceCents,
                 })),
-                extras: line.extras.map((extra, index) => ({
-                  name: extra.extra.name,
-                  priceCents: extra.priceCents,
-                  included: index < line.variant.includedExtraCount,
-                })),
+                extras: (() => {
+                  let freeUsed = 0;
+                  return line.extras.map((extra) => {
+                    const counts = extraCountsTowardIncluded(extra.extra.name);
+                    const included = counts && freeUsed < line.variant.includedExtraCount;
+                    if (included) freeUsed += 1;
+                    return {
+                      name: extra.extra.name,
+                      priceCents: extra.priceCents,
+                      included,
+                    };
+                  });
+                })(),
               },
             })),
           },

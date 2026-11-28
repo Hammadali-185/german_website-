@@ -2,7 +2,7 @@
   {
     "sku": "220",
     "name": "Angebot 1",
-    "description": "mit 1 Familien-Pizza m.4 Auflagen + 1 gr. Salat ihrer Wahl + 1,01 Cola mit käserand familie 4€",
+    "description": "mit 1 Familien-Pizza m.3 Auflagen + 1 gr. Salat ihrer Wahl + 1,01 Cola mit käserand familie 4€",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -15,7 +15,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-1-220?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -379,7 +379,7 @@
   {
     "sku": "221",
     "name": "Angebot 2",
-    "description": "2x 28er Pizza nach wahl mit 4 Auflagen + 1 kl. Salat Ihrer Wahl + Flasche Coca-cola",
+    "description": "2x 28er Pizza nach wahl mit 3 Auflagen + 1 kl. Salat Ihrer Wahl + Flasche Coca-cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -392,7 +392,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-2-221?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -1237,7 +1237,7 @@
   {
     "sku": "223",
     "name": "Angebot 4",
-    "description": "2 FAMILIEN-PIZZA mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
+    "description": "2 FAMILIEN-PIZZA mit 3 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -1250,7 +1250,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-4-223?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -1595,7 +1595,7 @@
   {
     "sku": "224",
     "name": "Angebot 5",
-    "description": "1x Partypizza mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
+    "description": "1x Partypizza mit 3 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01 L Cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -1608,7 +1608,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-5-224?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -1953,7 +1953,7 @@
   {
     "sku": "225",
     "name": "Angebot 6",
-    "description": "2x32er Pizza nach Wahl mit 4 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01L Coca-Cola",
+    "description": "2x32er Pizza nach Wahl mit 3 Auflagen + 1 gr. Salat Ihrer Wahl + 1,01L Coca-Cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -1966,7 +1966,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-6-225?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -2311,7 +2311,7 @@
   {
     "sku": "226",
     "name": "Angebot 7",
-    "description": "1X32 er Pizza nach Wahl mit 4 Auflagen + 1 kl. Salat Ihrer Wahl + 0,33l Dose Coca-cola",
+    "description": "1X32 er Pizza nach Wahl mit 3 Auflagen + 1 kl. Salat Ihrer Wahl + 0,33l Dose Coca-cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -2324,7 +2324,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-7-226?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -2669,7 +2669,7 @@
   {
     "sku": "227",
     "name": "Angebot 8",
-    "description": "1x28 er Pizza nach Wahl mit 4 Auflagen + 1 kl. Gemishtersalat + 0,33l Dose Coca-cola",
+    "description": "1x28 er Pizza nach Wahl mit 3 Auflagen + 1 kl. Gemishtersalat + 0,33l Dose Coca-cola",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -2682,7 +2682,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebot-8-227?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [
           {
             "sourceKey": "[1][36]",
@@ -3027,7 +3027,7 @@
   {
     "sku": "228",
     "name": "Angebote 9",
-    "description": "3x 32er Pizza nach Wahl mit 4 Auflagen",
+    "description": "3x 32er Pizza nach Wahl mit 3 Auflagen",
     "allergenCodes": "",
     "categorySlug": "angebot",
     "isOffer": true,
@@ -3040,7 +3040,7 @@
         "sourcePriceId": "94",
         "popupUrl": "https://www.pizzablitz.online/angebot/angebote-9-228?prs=94",
         "sortOrder": 0,
-        "includedExtraCount": 4,
+        "includedExtraCount": 3,
         "choiceGroups": [],
         "extras": [
           {
